@@ -30,6 +30,8 @@
     body {
       margin: 0;
       min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
       color: var(--cream);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
@@ -47,7 +49,11 @@
     .page {
       width: min(1120px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 24px 0 40px;
+      padding:
+        max(24px, env(safe-area-inset-top))
+        max(0px, env(safe-area-inset-right))
+        max(40px, env(safe-area-inset-bottom))
+        max(0px, env(safe-area-inset-left));
     }
 
     .disclosure {
@@ -139,6 +145,11 @@
       align-items: end;
     }
 
+    .gate > *,
+    .gate-fields > * {
+      min-width: 0;
+    }
+
     label {
       display: block;
       margin-bottom: 7px;
@@ -156,6 +167,7 @@
       border-radius: 10px;
       background: var(--navy-2);
       color: var(--white);
+      font-size: 16px;
     }
 
     .check-wrap {
@@ -211,6 +223,59 @@
 
     .status.error { color: #ff9ea1; }
     .status.success { color: #8fe6bd; }
+
+    .support-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      max-width: 790px;
+      margin: 30px auto;
+      padding: 17px 18px;
+      border: 1px solid rgba(69, 196, 138, .36);
+      border-radius: 15px;
+      background: rgba(69, 196, 138, .075);
+    }
+
+    .support-card h2 {
+      margin: 0 0 5px;
+      color: var(--white);
+      font-size: .98rem;
+    }
+
+    .support-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .8rem;
+      line-height: 1.5;
+    }
+
+    .support-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 9px;
+    }
+
+    .support-link {
+      display: inline-flex;
+      min-height: 42px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 13px;
+      border: 1px solid rgba(143, 230, 189, .42);
+      border-radius: 8px;
+      color: #a9f0ce;
+      font-size: .78rem;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .support-link.primary {
+      border-color: transparent;
+      background: var(--green);
+      color: #071b12;
+    }
 
     .vault-grid {
       display: grid;
@@ -452,6 +517,7 @@
     dialog {
       width: min(620px, calc(100% - 28px));
       max-height: min(80vh, 700px);
+      max-height: min(80dvh, 700px);
       padding: 0;
       overflow: auto;
       border: 1px solid rgba(243, 201, 105, .35);
@@ -539,28 +605,92 @@
       font-size: .73rem;
     }
 
+    @media (max-width: 980px) and (min-width: 791px) {
+      .page { width: min(940px, calc(100% - 28px)); }
+      .vault-grid { gap: 14px; }
+      .vault-frame { min-height: 350px; }
+      .vault-door { padding: 18px; }
+      .vault-wheel {
+        width: 94px;
+        height: 94px;
+        margin-bottom: 22px;
+        border-width: 8px;
+      }
+      .vault-wheel::before,
+      .vault-wheel::after { inset: 36px -18px; }
+      .wheel-hub { inset: 25px; }
+      .vault-description { font-size: .76rem; }
+    }
+
     @media (max-width: 790px) {
+      .page { width: min(680px, calc(100% - 28px)); }
+      .hero { margin-bottom: 24px; }
+      h1 { font-size: clamp(2.4rem, 12vw, 4.2rem); }
       .gate, .gate-fields { grid-template-columns: 1fr; }
       .unlock { width: 100%; }
+      .support-card { grid-template-columns: 1fr; }
+      .support-actions { justify-content: flex-start; }
       .vault-grid { grid-template-columns: 1fr; }
+      .vault-grid { gap: 18px; }
+      .vault-card { max-width: 520px; width: 100%; margin-inline: auto; }
       .vault-frame { min-height: 340px; }
       .vault-title { font-size: 1.45rem; }
       .vault-description { min-height: 0; }
+      .legal { padding-inline: 4px; }
     }
 
     @media (max-width: 480px) {
       .page {
         width: min(100% - 22px, 1120px);
-        padding-top: 14px;
+        padding-top: max(14px, env(safe-area-inset-top));
       }
 
-      .disclosure { margin-bottom: 22px; }
+      .disclosure {
+        margin-bottom: 22px;
+        padding: 8px 11px;
+        border-radius: 14px;
+        font-size: .7rem;
+      }
       .hero { margin-bottom: 22px; }
-      .gate { padding: 14px; }
-      .vault-frame { min-height: 320px; }
+      .hero-copy { margin-top: 14px; line-height: 1.5; }
+      .not-a-prize { font-size: .72rem; line-height: 1.45; }
+      .gate { margin-bottom: 30px; padding: 14px; border-radius: 14px; }
+      .status { margin-top: -17px; padding-inline: 6px; }
+      .vault-frame { min-height: 310px; }
+      .vault-door { padding: 18px; }
       .vault-wheel { width: 96px; height: 96px; }
       .vault-wheel::before, .vault-wheel::after { inset: 36px -19px; }
       .wheel-hub { inset: 25px; }
+      .support-card { padding: 15px; }
+      .support-actions { display: grid; grid-template-columns: 1fr; }
+      .support-link { width: 100%; }
+      .modal-inner { padding: 19px; }
+      .offer-cta { min-height: 50px; padding-inline: 12px; }
+    }
+
+    @media (max-width: 350px) {
+      .page { width: calc(100% - 16px); }
+      h1 { font-size: 2.05rem; }
+      .eyebrow { font-size: .68rem; }
+      .vault-frame { min-height: 290px; }
+      .vault-wheel {
+        width: 82px;
+        height: 82px;
+        margin-bottom: 20px;
+        border-width: 7px;
+      }
+      .vault-wheel::before,
+      .vault-wheel::after { inset: 31px -16px; }
+      .wheel-hub { inset: 21px; border-width: 5px; }
+      .vault-title { font-size: 1.25rem; }
+      .vault-description { font-size: .76rem; }
+    }
+
+    @media (max-height: 520px) and (orientation: landscape) {
+      dialog { max-height: calc(100dvh - 16px); }
+      .modal-inner { padding: 16px 20px; }
+      .offer-modal h2 { font-size: 1.7rem; }
+      .offer-cta { min-height: 44px; margin-top: 10px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -666,6 +796,21 @@
       </article>
     </section>
 
+    <aside class="support-card" aria-labelledby="supportTitle">
+      <div>
+        <h2 id="supportTitle">Play responsibly</h2>
+        <p id="supportCopy">
+          Set a spending limit, never chase losses and take regular breaks. Select your location
+          above to see the appropriate local support service.
+        </p>
+      </div>
+      <div class="support-actions" id="supportActions">
+        <a class="support-link" href="https://responsiblegambling.org/for-the-public/problem-gambling-help/help-for-canadians/" target="_blank" rel="noopener">
+          Canada support directory
+        </a>
+      </div>
+    </aside>
+
     <section class="result" id="vaultResult" tabindex="-1" aria-live="polite"></section>
 
     <footer class="legal">
@@ -753,19 +898,19 @@
     */
 
     const regions = {
-      AB: { name: "Alberta", age: 18, partnerName: "", partnerUrl: "" },
-      BC: { name: "British Columbia", age: 19, partnerName: "", partnerUrl: "" },
-      MB: { name: "Manitoba", age: 18, partnerName: "", partnerUrl: "" },
-      NB: { name: "New Brunswick", age: 19, partnerName: "", partnerUrl: "" },
-      NL: { name: "Newfoundland and Labrador", age: 19, partnerName: "", partnerUrl: "" },
-      NS: { name: "Nova Scotia", age: 19, partnerName: "", partnerUrl: "" },
-      NT: { name: "Northwest Territories", age: 19, partnerName: "", partnerUrl: "" },
-      NU: { name: "Nunavut", age: 19, partnerName: "", partnerUrl: "" },
-      ON: { name: "Ontario", age: 19, partnerName: "", partnerUrl: "", ontario: true },
-      PE: { name: "Prince Edward Island", age: 19, partnerName: "", partnerUrl: "" },
-      QC: { name: "Quebec", age: 18, partnerName: "", partnerUrl: "" },
-      SK: { name: "Saskatchewan", age: 19, partnerName: "", partnerUrl: "" },
-      YT: { name: "Yukon", age: 19, partnerName: "", partnerUrl: "" }
+      AB: { name: "Alberta", age: 18, supportName: "Alberta Problem Gambling Resources Network", supportPhone: "1-866-461-1259", supportUrl: "https://responsiblegambling.org/for-the-public/problem-gambling-help/help-for-canadians/" },
+      BC: { name: "British Columbia", age: 19, supportName: "Gambling Support BC", supportPhone: "1-888-795-6111", supportUrl: "https://www.gamblingsupportbc.ca/" },
+      MB: { name: "Manitoba", age: 18, supportName: "Manitoba Problem Gambling Helpline", supportPhone: "1-800-463-1554", supportUrl: "https://www.gov.mb.ca/contact/urgent_toll_free.html" },
+      NB: { name: "New Brunswick", age: 19, supportName: "New Brunswick Gambling Information Line", supportPhone: "1-800-461-1234", supportUrl: "https://www2.gnb.ca/content/gnb/en/departments/finance/lotteries_and_gaming_corporation/responsible_gaming.html" },
+      NL: { name: "Newfoundland and Labrador", age: 19, supportName: "Newfoundland and Labrador Gambling Help Line", supportPhone: "811", supportUrl: "https://www.gov.nl.ca/hcs/mentalhealth-committee/mentalhealth/helplines-and-navigator/" },
+      NS: { name: "Nova Scotia", age: 19, supportName: "Nova Scotia Mental Health and Addictions Crisis Line", supportPhone: "1-888-429-8167", supportUrl: "https://mha.nshealth.ca/en/topics/substance-use-and-gambling/gambling" },
+      NT: { name: "Northwest Territories", age: 19, supportName: "Northwest Territories General Help Line", supportPhone: "1-800-661-0844", supportUrl: "https://responsiblegambling.org/for-the-public/problem-gambling-help/help-for-canadians/" },
+      NU: { name: "Nunavut", age: 19, supportName: "Kamatsiaqtut Help Line", supportPhone: "1-800-265-3333", supportUrl: "https://www.gov.nu.ca/en/health/mental-health-resources" },
+      ON: { name: "Ontario", age: 19, supportName: "ConnexOntario", supportPhone: "1-866-531-2600", supportUrl: "https://connexontario.ca/", ontario: true },
+      PE: { name: "Prince Edward Island", age: 19, supportName: "PEI Gambling Support Line", supportPhone: "1-855-255-4255", supportUrl: "https://peigamblingsupport.princeedwardisland.ca/" },
+      QC: { name: "Quebec", age: 18, supportName: "Gambling: Help and Referral", supportPhone: "1-800-461-0140", supportUrl: "https://aidejeu.ca/en/" },
+      SK: { name: "Saskatchewan", age: 19, supportName: "Saskatchewan Problem Gambling Helpline", supportPhone: "1-800-306-6789", supportUrl: "https://www.saskatchewan.ca/residents/health/emergency-medical-services/problem-gambling-help-line" },
+      YT: { name: "Yukon", age: 19, supportName: "Mental Wellness and Substance Use Services", supportPhone: "1-866-456-3838", supportUrl: "https://yukon.ca/en/health-and-wellness/health-concerns-diseases-and-conditions/get-help-alcohol-and-drug-addiction" }
     };
 
     /*
@@ -779,6 +924,8 @@
     const ageConfirm = document.querySelector("#ageConfirm");
     const ageText = document.querySelector("#ageText");
     const status = document.querySelector("#status");
+    const supportCopy = document.querySelector("#supportCopy");
+    const supportActions = document.querySelector("#supportActions");
     const vaultCards = [...document.querySelectorAll(".vault-card")];
     const vaultButtons = [...document.querySelectorAll(".vault-button")];
     const result = document.querySelector("#vaultResult");
@@ -820,6 +967,21 @@
       ageText.textContent = region
         ? `I confirm I am ${region.age}+ and currently in ${region.name}.`
         : "I confirm I meet the legal gambling age where I live.";
+
+      if (region) {
+        const telephone = region.supportPhone.replace(/[^\d+]/g, "");
+        supportCopy.textContent = `Help in ${region.name}: ${region.supportName}. Free or confidential support may be available. Set limits, never chase losses and stop if gambling is causing harm.`;
+        supportActions.innerHTML = `
+          <a class="support-link primary" href="tel:${escapeHTML(telephone)}">Call ${escapeHTML(region.supportPhone)}</a>
+          <a class="support-link" href="${escapeHTML(region.supportUrl)}" target="_blank" rel="noopener">Local support website</a>
+        `;
+      } else {
+        supportCopy.textContent = "Set a spending limit, never chase losses and take regular breaks. Select your location above to see the appropriate local support service.";
+        supportActions.innerHTML = `
+          <a class="support-link" href="https://responsiblegambling.org/for-the-public/problem-gambling-help/help-for-canadians/" target="_blank" rel="noopener">Canada support directory</a>
+        `;
+      }
+
       ageConfirm.checked = false;
       lockVaults("Confirm your selected location and age to unlock the vaults.");
     }
