@@ -159,17 +159,6 @@
       letter-spacing: .04em;
     }
 
-    .geo-status {
-      min-height: 17px;
-      margin: 6px 2px 0;
-      color: #929db5;
-      font-size: .7rem;
-      line-height: 1.35;
-    }
-
-    .geo-status.detected { color: #8fe6bd; }
-    .geo-status.warning { color: #ffbd83; }
-
     select {
       width: 100%;
       min-height: 48px;
@@ -747,9 +736,6 @@
             <option value="SK">Saskatchewan</option>
             <option value="YT">Yukon</option>
           </select>
-          <p class="geo-status" id="geoStatus" role="status" aria-live="polite">
-            Checking your approximate location…
-          </p>
         </div>
 
         <label class="check-wrap" for="ageConfirm">
@@ -874,11 +860,8 @@
       <h2>Privacy</h2>
       <p>
         This template stores the selected province or territory in the visitor's browser so the
-        page can retain the choice. It also requests an approximate country and province lookup from
-        ipwho.is or ipapi.co using the visitor's IP address. The second service is used only if the
-        first lookup fails. It does not request precise GPS location and includes no analytics or
-        advertising tracker. Review both services' terms and privacy information and update this
-        notice before publishing or adding tracking technology.
+        page can retain the choice. It does not identify the visitor's precise location and includes
+        no analytics or advertising tracker. Update this notice before adding tracking technology.
       </p>
       <button class="modal-close" type="button">Close</button>
     </div>
@@ -938,7 +921,6 @@
 
     const gate = document.querySelector("#locationGate");
     const province = document.querySelector("#province");
-    const geoStatus = document.querySelector("#geoStatus");
     const ageConfirm = document.querySelector("#ageConfirm");
     const ageText = document.querySelector("#ageText");
     const status = document.querySelector("#status");
@@ -1002,78 +984,6 @@
 
       ageConfirm.checked = false;
       lockVaults("Confirm your selected location and age to unlock the vaults.");
-    }
-
-    async function detectProvince() {
-      geoStatus.className = "geo-status";
-      geoStatus.textContent = "Checking your approximate location…";
-
-      try {
-        const providers = [
-          {
-            url: "https://ipwho.is/",
-            normalize: (data) => ({
-              countryCode: data.success === false ? "" : data.country_code,
-              regionCode: data.region_code
-            })
-          },
-          {
-            url: "https://ipapi.co/json/",
-            normalize: (data) => ({
-              countryCode: data.country_code,
-              regionCode: data.region_code
-            })
-          }
-        ];
-
-        let detectedLocation = null;
-
-        for (const provider of providers) {
-          try {
-            const response = await fetch(provider.url, {
-              method: "GET",
-              headers: { Accept: "application/json" }
-            });
-            if (!response.ok) continue;
-            const normalized = provider.normalize(await response.json());
-            if (normalized.countryCode) {
-              detectedLocation = normalized;
-              break;
-            }
-          } catch (providerError) {
-            // Continue to the next provider.
-          }
-        }
-
-        if (!detectedLocation) throw new Error("All location services unavailable");
-
-        const countryCode = String(detectedLocation.countryCode || "").toUpperCase();
-        const regionCode = String(detectedLocation.regionCode || "").toUpperCase();
-
-        if (countryCode !== "CA") {
-          geoStatus.className = "geo-status warning";
-          geoStatus.textContent = "We could not confirm a Canadian location. Please select your location manually.";
-          return;
-        }
-
-        if (!regions[regionCode]) {
-          geoStatus.className = "geo-status warning";
-          geoStatus.textContent = "Canada detected, but the province could not be confirmed. Please select it manually.";
-          return;
-        }
-
-        province.value = regionCode;
-        updateAgeText();
-        geoStatus.className = "geo-status detected";
-        geoStatus.textContent = `${regions[regionCode].name} detected from your approximate IP location. Please confirm it is correct.`;
-        status.className = "status";
-        status.textContent = `We detected ${regions[regionCode].name}. Confirm the location and age above to continue.`;
-      } catch (error) {
-        geoStatus.className = "geo-status warning";
-        geoStatus.textContent = location.protocol === "file:"
-          ? "Location detection may be blocked in a local file preview. It should run after HTTPS hosting; select manually for this test."
-          : "Automatic location detection was unavailable. Please select your location manually.";
-      }
     }
 
     function showOffer(region) {
@@ -1191,8 +1101,6 @@
     } catch (error) {
       // No action is required when storage is blocked.
     }
-
-    detectProvince();
   </script>
 </body>
 </html>
