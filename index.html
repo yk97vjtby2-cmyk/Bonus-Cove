@@ -22,6 +22,8 @@
   html, body {
     width: 100%;
     min-height: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   body {
@@ -40,6 +42,8 @@
 
   button {
     font: inherit;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .curtains {
@@ -108,6 +112,7 @@
     position: relative;
     width: min(690px, calc(100vw - 150px));
     min-width: 570px;
+    transform: translateX(22px);
     padding: 24px 26px 32px;
     border-radius: 30px;
     background:
@@ -516,6 +521,7 @@
     .machine {
       width: min(680px, calc(100% - 92px));
       min-width: 0;
+      transform: translateX(18px);
       padding: 22px 20px 28px;
       border-width: 5px;
       border-radius: 26px;
@@ -566,6 +572,7 @@
 
     .machine {
       width: calc(100% - 54px);
+      transform: translateX(12px);
       padding: 18px 12px 24px;
       border-width: 4px;
       border-radius: 22px;
@@ -640,6 +647,12 @@
       letter-spacing: 3px;
     }
 
+    .spin-btn:hover:not(:disabled),
+    .spin-btn:active:not(:disabled) {
+      filter: none;
+      transform: none;
+    }
+
     .hint,
     .compliance-bar {
       width: min(100%, 560px);
@@ -667,6 +680,7 @@
 
     .machine {
       width: calc(100% - 40px);
+      transform: translateX(9px);
       padding-left: 9px;
       padding-right: 9px;
     }
@@ -1136,7 +1150,7 @@
   function showWin() {
     overlay.classList.add("show");
     createConfetti();
-    closeBtn.focus();
+    closeBtn.focus({ preventScroll: true });
   }
 
   function performSpin() {
@@ -1185,7 +1199,7 @@
 
   function closePopup() {
     overlay.classList.remove("show");
-    spinBtn.focus();
+    spinBtn.focus({ preventScroll: true });
   }
 
   spinBtn.addEventListener("click", spin);
