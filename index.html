@@ -1092,8 +1092,8 @@
         label.textContent = isSelected ? "Selected vault" : "Locked";
       });
 
-      status.className = "status success";
-      status.textContent = "Vault selected. The other two vaults are now locked.";
+      status.className = "status";
+      status.textContent = "";
       trackEvent("vault_opened", {
         region: unlockedRegion || "not_selected",
         vault: card.dataset.vault
