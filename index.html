@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#101729">
-  <title>Canada Vault Guide</title>
+  <title>Casino Welcome Promotion</title>
   <style>
     :root {
       --navy: #101729;
@@ -116,11 +116,14 @@
     }
 
     .not-a-prize {
-      display: inline-block;
-      margin-top: 14px;
+      display: block;
+      max-width: 720px;
+      margin: 16px auto 0;
       color: var(--cream);
       font-size: .79rem;
       font-weight: 800;
+      line-height: 1.5;
+      text-align: center;
     }
 
     .gate {
@@ -148,6 +151,27 @@
     .gate > *,
     .gate-fields > * {
       min-width: 0;
+    }
+
+    .location-gate {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+      align-items: center;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+
+    .location-copy {
+      margin: 0;
+      color: var(--muted);
+      font-size: .84rem;
+      line-height: 1.55;
+    }
+
+    .location-details {
+      margin-top: 5px;
+      color: var(--gold);
+      font-size: .76rem;
+      font-weight: 800;
     }
 
     label {
@@ -215,7 +239,7 @@
     .status {
       min-height: 22px;
       max-width: 790px;
-      margin: -20px auto 26px;
+      margin: 0 auto 26px;
       color: var(--muted);
       font-size: .84rem;
       text-align: center;
@@ -627,6 +651,7 @@
       .hero { margin-bottom: 24px; }
       h1 { font-size: clamp(2.4rem, 12vw, 4.2rem); }
       .gate, .gate-fields { grid-template-columns: 1fr; }
+      .location-gate { grid-template-columns: 1fr; }
       .unlock { width: 100%; }
       .support-card { grid-template-columns: 1fr; }
       .support-actions { justify-content: flex-start; }
@@ -655,7 +680,7 @@
       .hero-copy { margin-top: 14px; line-height: 1.5; }
       .not-a-prize { font-size: .72rem; line-height: 1.45; }
       .gate { margin-bottom: 30px; padding: 14px; border-radius: 14px; }
-      .status { margin-top: -17px; padding-inline: 6px; }
+      .status { padding-inline: 6px; }
       .vault-frame { min-height: 310px; }
       .vault-door { padding: 18px; }
       .vault-wheel { width: 96px; height: 96px; }
@@ -708,50 +733,18 @@
     <p class="disclosure">Advertising and affiliate comparison page</p>
 
     <header class="hero">
-      <p class="eyebrow">Canada Vault Guide</p>
+      <p class="eyebrow">Casino Welcome Promotion</p>
       <h1>Choose a vault</h1>
       <p class="hero-copy">
-        Choose any vault to reveal the available partner offer for your selected location.
+        Choose any unlocked vault to reveal the available partner offer.
       </p>
-      <span class="not-a-prize">This is an information experience—not a game, draw, prize or cash award.</span>
     </header>
 
-    <form class="gate" id="locationGate" novalidate>
-      <div class="gate-fields">
-        <div>
-          <label for="province">Your province or territory</label>
-          <select id="province" name="province" required>
-            <option value="">Select your location</option>
-            <option value="AB">Alberta</option>
-            <option value="BC">British Columbia</option>
-            <option value="MB">Manitoba</option>
-            <option value="NB">New Brunswick</option>
-            <option value="NL">Newfoundland and Labrador</option>
-            <option value="NS">Nova Scotia</option>
-            <option value="NT">Northwest Territories</option>
-            <option value="NU">Nunavut</option>
-            <option value="ON">Ontario</option>
-            <option value="PE">Prince Edward Island</option>
-            <option value="QC">Quebec</option>
-            <option value="SK">Saskatchewan</option>
-            <option value="YT">Yukon</option>
-          </select>
-        </div>
-
-        <label class="check-wrap" for="ageConfirm">
-          <input id="ageConfirm" type="checkbox">
-          <span id="ageText">I confirm I meet the legal gambling age where I live.</span>
-        </label>
-      </div>
-
-      <button class="unlock" type="submit">Unlock the vaults</button>
-    </form>
-
-    <p class="status" id="status" role="status" aria-live="polite">Select your location and confirm your age to continue.</p>
+    <p class="status success" id="status" role="status" aria-live="polite">All vaults are unlocked. Choose one below.</p>
 
     <section class="vault-grid" aria-label="Information vaults">
       <article class="vault-card" data-vault="local">
-        <button class="vault-button" type="button" disabled aria-expanded="false" aria-controls="vaultResult">
+        <button class="vault-button" type="button" aria-expanded="false" aria-controls="vaultResult">
           <span class="vault-frame">
             <span class="vault-inside" aria-hidden="true"><span class="inside-mark">01</span></span>
             <span class="vault-door">
@@ -766,7 +759,7 @@
       </article>
 
       <article class="vault-card" data-vault="compare">
-        <button class="vault-button" type="button" disabled aria-expanded="false" aria-controls="vaultResult">
+        <button class="vault-button" type="button" aria-expanded="false" aria-controls="vaultResult">
           <span class="vault-frame">
             <span class="vault-inside" aria-hidden="true"><span class="inside-mark">02</span></span>
             <span class="vault-door">
@@ -781,7 +774,7 @@
       </article>
 
       <article class="vault-card" data-vault="terms">
-        <button class="vault-button" type="button" disabled aria-expanded="false" aria-controls="vaultResult">
+        <button class="vault-button" type="button" aria-expanded="false" aria-controls="vaultResult">
           <span class="vault-frame">
             <span class="vault-inside" aria-hidden="true"><span class="inside-mark">03</span></span>
             <span class="vault-door">
@@ -796,12 +789,46 @@
       </article>
     </section>
 
+    <p class="not-a-prize">
+      This is an information experience—not a game, draw, prize or cash award.
+    </p>
+
+    <form class="gate location-gate" id="locationGate">
+      <div>
+        <label for="province">Optional: your province or territory</label>
+        <select id="province" name="province">
+          <option value="">Select your location (optional)</option>
+          <option value="AB">Alberta</option>
+          <option value="BC">British Columbia</option>
+          <option value="MB">Manitoba</option>
+          <option value="NB">New Brunswick</option>
+          <option value="NL">Newfoundland and Labrador</option>
+          <option value="NS">Nova Scotia</option>
+          <option value="NT">Northwest Territories</option>
+          <option value="NU">Nunavut</option>
+          <option value="ON">Ontario</option>
+          <option value="PE">Prince Edward Island</option>
+          <option value="QC">Quebec</option>
+          <option value="SK">Saskatchewan</option>
+          <option value="YT">Yukon</option>
+        </select>
+        <div class="location-details" id="locationDetails" aria-live="polite">
+          Canada: legal gambling age and licensing rules vary by location.
+        </div>
+      </div>
+      <p class="location-copy">
+        Please select your local province or territory to check your area's legal gambling age,
+        local support service and licensing reminder. Selection is optional and does not determine
+        your eligibility for an operator's offer.
+      </p>
+    </form>
+
     <aside class="support-card" aria-labelledby="supportTitle">
       <div>
         <h2 id="supportTitle">Play responsibly</h2>
         <p id="supportCopy">
           Set a spending limit, never chase losses and take regular breaks. Select your location
-          above to see the appropriate local support service.
+          to see the appropriate local support service.
         </p>
       </div>
       <div class="support-actions" id="supportActions">
@@ -922,8 +949,7 @@
 
     const gate = document.querySelector("#locationGate");
     const province = document.querySelector("#province");
-    const ageConfirm = document.querySelector("#ageConfirm");
-    const ageText = document.querySelector("#ageText");
+    const locationDetails = document.querySelector("#locationDetails");
     const status = document.querySelector("#status");
     const supportCopy = document.querySelector("#supportCopy");
     const supportActions = document.querySelector("#supportActions");
@@ -980,48 +1006,62 @@
       result.replaceChildren();
     }
 
-    function lockVaults(message) {
-      unlockedRegion = "";
-      vaultButtons.forEach((button) => { button.disabled = true; });
+    function resetVaults(message = "All vaults are unlocked. Choose one below.") {
+      vaultButtons.forEach((button) => { button.disabled = false; });
       vaultCards.forEach((card) => {
         card.querySelector(".open-label").textContent = "Open this vault";
       });
       closeVaults();
-      status.className = "status";
+      status.className = "status success";
       status.textContent = message;
     }
 
-    function updateAgeText() {
+    function updateLocationInfo() {
       const region = regions[province.value];
-      ageText.textContent = region
-        ? `I confirm I am ${region.age}+ and currently in ${region.name}.`
-        : "I confirm I meet the legal gambling age where I live.";
+      unlockedRegion = province.value;
 
       if (region) {
         const telephone = region.supportPhone.replace(/[^\d+]/g, "");
+        locationDetails.textContent = `${region.name}: legal gambling age ${region.age}+. Check that the operator is permitted or appropriately authorized for this location.`;
         supportCopy.textContent = `Help in ${region.name}: ${region.supportName}. Free or confidential support may be available. Set limits, never chase losses and stop if gambling is causing harm.`;
         supportActions.innerHTML = `
           <a class="support-link primary" href="tel:${escapeHTML(telephone)}">Call ${escapeHTML(region.supportPhone)}</a>
           <a class="support-link" href="${escapeHTML(region.supportUrl)}" target="_blank" rel="noopener">Local support website</a>
         `;
+        trackEvent("location_selected", { region: unlockedRegion });
       } else {
-        supportCopy.textContent = "Set a spending limit, never chase losses and take regular breaks. Select your location above to see the appropriate local support service.";
+        locationDetails.textContent = "Canada: legal gambling age and licensing rules vary by location.";
+        supportCopy.textContent = "Set a spending limit, never chase losses and take regular breaks. Select your location to see the appropriate local support service.";
         supportActions.innerHTML = `
           <a class="support-link" href="https://responsiblegambling.org/for-the-public/problem-gambling-help/help-for-canadians/" target="_blank" rel="noopener">Canada support directory</a>
         `;
       }
 
-      ageConfirm.checked = false;
-      lockVaults("Confirm your selected location and age to unlock the vaults.");
+      try {
+        if (unlockedRegion) {
+          localStorage.setItem("canadaVaultRegion", unlockedRegion);
+        } else {
+          localStorage.removeItem("canadaVaultRegion");
+        }
+      } catch (error) {
+        // The experience still works if browser storage is unavailable.
+      }
+
+      resetVaults(region
+        ? `Location information updated for ${region.name}. All vaults are unlocked.`
+        : "All vaults are unlocked. Choose one below."
+      );
     }
 
     function showOffer(region) {
       const hasLink = /^(https?:\/\/|file:\/\/\/)/i.test(affiliateOffer.affiliateUrl);
-      const isApproved = affiliateOffer.approvedRegions.includes(unlockedRegion);
+      const isApproved = !unlockedRegion || affiliateOffer.approvedRegions.includes(unlockedRegion);
       const isConfigured = hasLink && isApproved && affiliateOffer.operatorName !== "Partner Casino";
 
       offerHeadline.textContent = affiliateOffer.headline;
-      offerDescription.textContent = `${affiliateOffer.description} Availability shown for ${region.name}.`;
+      offerDescription.textContent = unlockedRegion
+        ? `${affiliateOffer.description} Location selected: ${region.name}.`
+        : `${affiliateOffer.description} Check the operator's availability for your location.`;
       offerTerms.textContent = affiliateOffer.terms;
 
       if (isConfigured) {
@@ -1038,9 +1078,7 @@
     }
 
     function openVault(card) {
-      if (!unlockedRegion) return;
-
-      const region = regions[unlockedRegion];
+      const region = regions[unlockedRegion] || { name: "Canada" };
       closeVaults();
       card.classList.add("open");
       const selectedButton = card.querySelector(".vault-button");
@@ -1057,56 +1095,21 @@
       status.className = "status success";
       status.textContent = "Vault selected. The other two vaults are now locked.";
       trackEvent("vault_opened", {
-        region: unlockedRegion,
+        region: unlockedRegion || "not_selected",
         vault: card.dataset.vault
       });
 
       window.setTimeout(() => {
         showOffer(region);
         trackEvent("offer_viewed", {
-          region: unlockedRegion,
+          region: unlockedRegion || "not_selected",
           vault: card.dataset.vault
         });
       }, 480);
     }
 
-    province.addEventListener("change", updateAgeText);
-
-    gate.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const region = regions[province.value];
-
-      if (!region) {
-        lockVaults("Please select your province or territory.");
-        status.classList.add("error");
-        province.focus();
-        return;
-      }
-
-      if (!ageConfirm.checked) {
-        lockVaults(`Confirm that you are ${region.age}+ and currently in ${region.name}.`);
-        status.classList.add("error");
-        ageConfirm.focus();
-        return;
-      }
-
-      unlockedRegion = province.value;
-      vaultButtons.forEach((button) => { button.disabled = false; });
-      vaultCards.forEach((card) => {
-        card.querySelector(".open-label").textContent = "Open this vault";
-      });
-      status.className = "status success";
-      status.textContent = `Vaults unlocked for ${region.name}. Choose one clearly labelled vault below.`;
-      trackEvent("location_confirmed", { region: unlockedRegion });
-
-      try {
-        localStorage.setItem("canadaVaultRegion", unlockedRegion);
-      } catch (error) {
-        // The experience still works if browser storage is unavailable.
-      }
-
-      vaultButtons[0].focus();
-    });
+    province.addEventListener("change", updateLocationInfo);
+    gate.addEventListener("submit", (event) => event.preventDefault());
 
     vaultCards.forEach((card) => {
       card.querySelector(".vault-button").addEventListener("click", () => openVault(card));
@@ -1119,7 +1122,7 @@
       }
 
       trackEvent("affiliate_click", {
-        region: unlockedRegion,
+        region: unlockedRegion || "not_selected",
         operator: affiliateOffer.operatorName
       });
     });
@@ -1142,7 +1145,7 @@
       const savedRegion = localStorage.getItem("canadaVaultRegion");
       if (savedRegion && regions[savedRegion]) {
         province.value = savedRegion;
-        updateAgeText();
+        updateLocationInfo();
       }
     } catch (error) {
       // No action is required when storage is blocked.
