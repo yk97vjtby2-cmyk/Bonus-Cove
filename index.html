@@ -860,8 +860,9 @@
       <h2>Privacy</h2>
       <p>
         This template stores the selected province or territory in the visitor's browser so the
-        page can retain the choice. It does not identify the visitor's precise location and includes
-        no analytics or advertising tracker. Update this notice before adding tracking technology.
+        page can retain the choice. Location is selected manually: this page does not request GPS
+        access or contact an IP-geolocation provider. It includes no analytics or advertising tracker
+        by default. Update this notice before adding tracking technology.
       </p>
       <button class="modal-close" type="button">Close</button>
     </div>
@@ -935,6 +936,34 @@
     const offerLink = document.querySelector("#offerLink");
     const offerTerms = document.querySelector("#offerTerms");
     let unlockedRegion = "";
+
+    const queryParameters = new URLSearchParams(window.location.search);
+    const trafficContext = {
+      source: queryParameters.get("utm_source") || queryParameters.get("source") || "direct",
+      medium: queryParameters.get("utm_medium") || queryParameters.get("medium") || "none",
+      campaign: queryParameters.get("utm_campaign") || queryParameters.get("campaign") || "",
+      creative: queryParameters.get("utm_content") || queryParameters.get("creative") || "",
+      clickId: queryParameters.get("clickid") || queryParameters.get("click_id") || "",
+      zoneId: queryParameters.get("zoneid") || queryParameters.get("zone_id") || ""
+    };
+
+    try {
+      sessionStorage.setItem("vaultTrafficContext", JSON.stringify(trafficContext));
+    } catch (error) {
+      // Attribution remains available for this page view if storage is blocked.
+    }
+
+    function trackEvent(eventName, eventDetails = {}) {
+      const eventData = {
+        event: eventName,
+        ...trafficContext,
+        ...eventDetails
+      };
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(eventData);
+      window.dispatchEvent(new CustomEvent("vaultTrackingEvent", { detail: eventData }));
+    }
 
     const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (character) => ({
       "&": "&amp;",
@@ -1027,9 +1056,17 @@
 
       status.className = "status success";
       status.textContent = "Vault selected. The other two vaults are now locked.";
+      trackEvent("vault_opened", {
+        region: unlockedRegion,
+        vault: card.dataset.vault
+      });
 
       window.setTimeout(() => {
         showOffer(region);
+        trackEvent("offer_viewed", {
+          region: unlockedRegion,
+          vault: card.dataset.vault
+        });
       }, 480);
     }
 
@@ -1060,6 +1097,7 @@
       });
       status.className = "status success";
       status.textContent = `Vaults unlocked for ${region.name}. Choose one clearly labelled vault below.`;
+      trackEvent("location_confirmed", { region: unlockedRegion });
 
       try {
         localStorage.setItem("canadaVaultRegion", unlockedRegion);
@@ -1075,7 +1113,15 @@
     });
 
     offerLink.addEventListener("click", (event) => {
-      if (offerLink.getAttribute("aria-disabled") === "true") event.preventDefault();
+      if (offerLink.getAttribute("aria-disabled") === "true") {
+        event.preventDefault();
+        return;
+      }
+
+      trackEvent("affiliate_click", {
+        region: unlockedRegion,
+        operator: affiliateOffer.operatorName
+      });
     });
 
     document.querySelectorAll("[data-modal]").forEach((button) => {
@@ -1101,6 +1147,8 @@
     } catch (error) {
       // No action is required when storage is blocked.
     }
+
+    trackEvent("landing_view");
   </script>
 </body>
 </html>
