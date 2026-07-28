@@ -91,19 +91,20 @@
     }
 
     .eyebrow {
-      margin: 0 0 9px;
+      margin: 0;
       color: var(--gold);
-      font-size: .76rem;
-      font-weight: 900;
-      letter-spacing: .18em;
+      font-size: clamp(2.1rem, 5.2vw, 4rem);
+      font-weight: 800;
+      line-height: .95;
+      letter-spacing: .015em;
       text-transform: uppercase;
     }
 
     h1 {
-      margin: 0;
-      font-size: clamp(2.4rem, 8vw, 5rem);
-      line-height: .96;
-      letter-spacing: -.055em;
+      margin: 12px 0 0;
+      font-size: clamp(1.6rem, 4vw, 3rem);
+      line-height: 1;
+      letter-spacing: -.035em;
       text-transform: uppercase;
     }
 
@@ -631,8 +632,18 @@
 
     @media (max-width: 980px) and (min-width: 791px) {
       .page { width: min(940px, calc(100% - 28px)); }
-      .vault-grid { gap: 14px; }
-      .vault-frame { min-height: 350px; }
+      .vault-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        width: min(760px, 100%);
+        margin-inline: auto;
+      }
+      .vault-card:nth-child(3) {
+        grid-column: 1 / 3;
+        justify-self: center;
+        width: calc(50% - 7px);
+      }
+      .vault-frame { min-height: 320px; }
       .vault-door { padding: 18px; }
       .vault-wheel {
         width: 94px;
@@ -649,17 +660,39 @@
     @media (max-width: 790px) {
       .page { width: min(680px, calc(100% - 28px)); }
       .hero { margin-bottom: 24px; }
-      h1 { font-size: clamp(2.4rem, 12vw, 4.2rem); }
+      .eyebrow { font-size: clamp(1.9rem, 8vw, 3.2rem); }
+      h1 { font-size: clamp(1.4rem, 6vw, 2.4rem); }
       .gate, .gate-fields { grid-template-columns: 1fr; }
       .location-gate { grid-template-columns: 1fr; }
       .unlock { width: 100%; }
       .support-card { grid-template-columns: 1fr; }
       .support-actions { justify-content: flex-start; }
-      .vault-grid { grid-template-columns: 1fr; }
-      .vault-grid { gap: 18px; }
-      .vault-card { max-width: 520px; width: 100%; margin-inline: auto; }
-      .vault-frame { min-height: 340px; }
-      .vault-title { font-size: 1.45rem; }
+      .vault-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        width: min(620px, 100%);
+        margin-inline: auto;
+      }
+      .vault-card { width: 100%; }
+      .vault-card:nth-child(3) {
+        grid-column: 1 / 3;
+        justify-self: center;
+        width: calc(50% - 6px);
+      }
+      .vault-frame { min-height: 270px; }
+      .vault-door { padding: 13px; }
+      .vault-wheel {
+        width: 78px;
+        height: 78px;
+        margin-bottom: 18px;
+        border-width: 7px;
+      }
+      .vault-wheel::before,
+      .vault-wheel::after { inset: 29px -15px; }
+      .wheel-hub { inset: 20px; border-width: 5px; }
+      .vault-title { font-size: 1.05rem; }
+      .vault-description { font-size: .7rem; }
+      .open-label { font-size: .65rem; margin-top: 12px; }
       .vault-description { min-height: 0; }
       .legal { padding-inline: 4px; }
     }
@@ -681,11 +714,22 @@
       .not-a-prize { font-size: .72rem; line-height: 1.45; }
       .gate { margin-bottom: 30px; padding: 14px; border-radius: 14px; }
       .status { padding-inline: 6px; }
-      .vault-frame { min-height: 310px; }
-      .vault-door { padding: 18px; }
-      .vault-wheel { width: 96px; height: 96px; }
-      .vault-wheel::before, .vault-wheel::after { inset: 36px -19px; }
-      .wheel-hub { inset: 25px; }
+      .vault-grid { gap: 10px; }
+      .vault-card:nth-child(3) { width: calc(50% - 5px); }
+      .vault-frame { min-height: 220px; border-radius: 14px; }
+      .vault-door { padding: 10px; border-radius: 11px; }
+      .vault-wheel {
+        width: 62px;
+        height: 62px;
+        margin-bottom: 14px;
+        border-width: 6px;
+      }
+      .vault-wheel::before, .vault-wheel::after { inset: 23px -12px; }
+      .wheel-hub { inset: 16px; border-width: 4px; }
+      .vault-number { font-size: .6rem; }
+      .vault-title { font-size: .9rem; }
+      .vault-description { font-size: .62rem; line-height: 1.3; }
+      .open-label { margin-top: 10px; font-size: .58rem; letter-spacing: .08em; }
       .support-card { padding: 15px; }
       .support-actions { display: grid; grid-template-columns: 1fr; }
       .support-link { width: 100%; }
@@ -695,20 +739,20 @@
 
     @media (max-width: 350px) {
       .page { width: calc(100% - 16px); }
-      h1 { font-size: 2.05rem; }
-      .eyebrow { font-size: .68rem; }
-      .vault-frame { min-height: 290px; }
+      .eyebrow { font-size: 1.65rem; }
+      h1 { font-size: 1.2rem; }
+      .vault-frame { min-height: 205px; }
       .vault-wheel {
-        width: 82px;
-        height: 82px;
-        margin-bottom: 20px;
-        border-width: 7px;
+        width: 56px;
+        height: 56px;
+        margin-bottom: 12px;
+        border-width: 5px;
       }
       .vault-wheel::before,
-      .vault-wheel::after { inset: 31px -16px; }
-      .wheel-hub { inset: 21px; border-width: 5px; }
-      .vault-title { font-size: 1.25rem; }
-      .vault-description { font-size: .76rem; }
+      .vault-wheel::after { inset: 21px -10px; }
+      .wheel-hub { inset: 15px; border-width: 4px; }
+      .vault-title { font-size: .82rem; }
+      .vault-description { font-size: .58rem; }
     }
 
     @media (max-height: 520px) and (orientation: landscape) {
@@ -1088,8 +1132,8 @@
         const button = vaultCard.querySelector(".vault-button");
         const label = vaultCard.querySelector(".open-label");
         const isSelected = vaultCard === card;
-        button.disabled = !isSelected;
-        label.textContent = isSelected ? "Selected vault" : "Locked";
+        button.disabled = false;
+        label.textContent = isSelected ? "Selected vault" : "Open this vault";
       });
 
       status.className = "status";
