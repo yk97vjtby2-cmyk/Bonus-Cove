@@ -552,6 +552,7 @@
       cursor: pointer;
       font-size: .76rem;
       text-decoration: underline;
+      text-underline-offset: 2px;
     }
 
     dialog {
@@ -666,110 +667,7 @@
     .offer-option { padding: 13px 15px; border: 1px solid rgba(226, 188, 92, .42); border-radius: 12px; background: rgba(15, 29, 57, .82); }
     .offer-option strong { display: block; margin-bottom: 4px; color: #f3cf72; }
     .offer-option span { display: block; color: #f6f2e8; font-size: .9rem; line-height: 1.45; }
-
-    .cookie-banner {
-      position: fixed;
-      z-index: 1000;
-      left: 50%;
-      bottom: max(10px, env(safe-area-inset-bottom));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: min(680px, calc(100% - 24px));
-      padding: 9px 11px;
-      border: 1px solid rgba(243, 201, 105, .30);
-      border-radius: 999px;
-      background: rgba(16, 23, 41, .96);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .36);
-      color: var(--cream);
-      backdrop-filter: blur(10px);
-    }
-
-    .cookie-banner[hidden] { display: none; }
-
-    .cookie-copy {
-      margin: 0;
-      color: var(--muted);
-      font-size: .72rem;
-      line-height: 1.35;
-      text-align: center;
-    }
-
-    .cookie-copy button {
-      padding: 0;
-      border: 0;
-      background: none;
-      color: var(--gold);
-      cursor: pointer;
-      font: inherit;
-      font-weight: 800;
-      text-decoration: underline;
-    }
-
-    .cookie-accept {
-      min-height: 34px;
-      padding: 0 12px;
-      border: 0;
-      border-radius: 999px;
-      background: var(--gold);
-      color: #17120a;
-      cursor: pointer;
-      font-size: .72rem;
-      font-weight: 950;
-      white-space: nowrap;
-    }
-
-    @media (max-width: 600px) {
-      .cookie-banner {
-        left: max(8px, env(safe-area-inset-left));
-        right: max(8px, env(safe-area-inset-right));
-        bottom: max(8px, env(safe-area-inset-bottom));
-        width: auto;
-        max-width: none;
-        transform: none;
-        flex-wrap: wrap;
-        gap: 7px 9px;
-        padding: 8px 10px;
-        border-radius: 14px;
-      }
-
-      .cookie-copy {
-        flex: 1 1 220px;
-        font-size: .68rem;
-        line-height: 1.3;
-        text-align: left;
-      }
-
-      .cookie-accept {
-        min-height: 34px;
-        padding: 0 11px;
-        font-size: .69rem;
-      }
-    }
-
-    @media (max-width: 390px) {
-      .cookie-banner {
-        align-items: stretch;
-      }
-
-      .cookie-copy {
-        flex-basis: 100%;
-        text-align: center;
-      }
-
-      .cookie-accept {
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 600px) and (max-height: 700px) {
-      .cookie-banner {
-        max-height: min(42dvh, 300px);
-        overflow-y: auto;
-        overscroll-behavior: contain;
-      }
-    }
+}
 
     @media (max-width: 980px) and (min-width: 791px) {
       .page { width: min(940px, calc(100% - 28px)); }
@@ -1031,37 +929,14 @@
       Availability, licensing and advertising rules vary across Canada. Verify every operator,
       statement and promotion for the visitor's location before publishing or buying traffic.
       <div class="footer-actions">
-        <button class="footer-button" type="button" data-modal="affiliateModal">Affiliate disclosure</button>
-        <button class="footer-button" type="button" data-modal="privacyModal">Privacy</button>
-        <button class="footer-button" type="button" data-modal="responsibleModal">Responsible gambling</button>
+        <a class="footer-button" href="affiliate-disclosure.html" target="_blank" rel="noopener noreferrer">Affiliate disclosure</a>
+        <a class="footer-button" href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy</a>
+        <a class="footer-button" href="terms.html" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a>
+        <a class="footer-button" href="responsible-gambling.html" target="_blank" rel="noopener noreferrer">Responsible gambling</a>
       </div>
     </footer>
   </main>
-
-
-  <aside class="cookie-banner" id="cookieBanner" role="region" aria-label="Privacy and tracking notice" hidden>
-    <p class="cookie-copy">
-      <strong>Privacy & tracking:</strong> We use browser storage for site preferences and BeMob to
-      measure campaign visits and offer clicks.
-      <button type="button" id="cookiePrivacy">Privacy details</button>
-    </p>
-    <button class="cookie-accept" type="button" id="cookieAccept">Got it</button>
-  </aside>
-
-  <dialog id="affiliateModal">
-    <div class="modal-inner">
-      <h2>Affiliate disclosure</h2>
-      <p>
-        This website contains affiliate links. If you register through our links, we may receive
-        a commission at no extra cost to you. Compensation does not influence how partner casinos
-        are presented. Always review the operator's eligibility requirements, availability and
-        full terms before registering.
-      </p>
-      <button class="modal-close" type="button">Close</button>
-    </div>
-  </dialog>
-
-  <dialog id="offerModal">
+<dialog id="offerModal">
     <div class="modal-inner offer-modal">
       <span class="offer-badge">Partner offer</span>
       <img class="offer-logo" id="offerLogo" src="" alt="">
@@ -1079,44 +954,7 @@
       <button class="modal-close" type="button">Close</button>
     </div>
   </dialog>
-
-  <dialog id="privacyModal">
-    <div class="modal-inner">
-      <h2>Privacy</h2>
-      <p>
-        This page uses browser storage to remember your selected province or territory and whether
-        you have acknowledged the tracking notice. Location is selected manually: this page does not
-        request GPS access. We use BeMob for campaign attribution and performance measurement.
-        BeMob records campaign visits and offer clicks and may process technical information used for
-        tracking, such as IP address, browser/device information, referrer and campaign or click
-        identifiers. Please review the destination operator's privacy and cookie information
-        before registering.
-      </p>
-      <button class="modal-close" type="button">Close</button>
-    </div>
-  </dialog>
-
-  <dialog id="responsibleModal">
-    <div class="modal-inner">
-      <h2>Responsible gambling</h2>
-      <p>
-        Gambling should be entertainment, not a way to earn money. Set time and spending limits,
-        never chase losses, and stop if gambling is causing harm. Local support and self-exclusion
-        services vary by province or territory.
-      </p>
-      <p>
-        <a href="https://responsiblegambling.org/" target="_blank" rel="noopener noreferrer">Responsible Gambling Council (Canada)</a><br>
-        <a href="https://www.gamtalk.org/" target="_blank" rel="noopener noreferrer">GamTalk / Evive community support</a>
-      </p>
-      <p>
-        For province- or territory-specific help, use the location selector on this page to access
-        the relevant local support service.
-      </p>
-      <button class="modal-close" type="button">Close</button>
-    </div>
-  </dialog>
-
-  <script>
+<script>
     const affiliateOffers = {
       "winner-island": {
         operatorName: "Winner Island",
@@ -1401,12 +1239,7 @@
         operator: activeOffer ? activeOffer.operatorName : "unknown"
       });
     });
-
-    document.querySelectorAll("[data-modal]").forEach((button) => {
-      button.addEventListener("click", () => document.querySelector(`#${button.dataset.modal}`).showModal());
-    });
-
-    document.querySelectorAll(".modal-close").forEach((button) => {
+document.querySelectorAll(".modal-close").forEach((button) => {
       button.addEventListener("click", () => button.closest("dialog").close());
     });
 
@@ -1415,61 +1248,7 @@
         if (event.target === dialog) dialog.close();
       });
     });
-
-
-    const cookieBanner = document.querySelector("#cookieBanner");
-    const cookieAccept = null;
-    const cookiePrivacy = null;
-
-    function updateCookieBannerForViewport() {
-      if (!cookieBanner || cookieBanner.hidden) return;
-
-      if (window.innerWidth <= 600 && window.visualViewport) {
-        const viewport = window.visualViewport;
-        const coveredBottom = Math.max(
-          0,
-          window.innerHeight - (viewport.height + viewport.offsetTop)
-        );
-        cookieBanner.style.bottom = `calc(${Math.max(10, coveredBottom + 10)}px + env(safe-area-inset-bottom))`;
-      } else {
-        cookieBanner.style.bottom = "";
-      }
-    }
-
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener("resize", updateCookieBannerForViewport);
-      window.visualViewport.addEventListener("scroll", updateCookieBannerForViewport);
-    }
-    window.addEventListener("resize", updateCookieBannerForViewport);
-    window.addEventListener("orientationchange", () => {
-      setTimeout(updateCookieBannerForViewport, 100);
-    });
-
-    try {
-      if ((localStorage.getItem("cbcTrackingNoticeAccepted") || localStorage.getItem("cbcCookieNoticeAccepted")) !== "yes") {
-        cookieBanner.hidden = false;
-      requestAnimationFrame(updateCookieBannerForViewport);
-        requestAnimationFrame(updateCookieBannerForViewport);
-      }
-    } catch (error) {
-      cookieBanner.hidden = false;
-    }
-
-    cookieAccept.addEventListener("click", () => {
-      try {
-        localStorage.setItem("cbcTrackingNoticeAccepted", "yes");
-      } catch (error) {
-        // The banner can still be dismissed if browser storage is unavailable.
-      }
-      cookieBanner.hidden = true;
-      cookieBanner.style.bottom = "";
-    });
-
-    cookiePrivacy.addEventListener("click", () => {
-      document.querySelector("#privacyModal").showModal();
-    });
-
-    try {
+try {
       const savedRegion = localStorage.getItem("canadaVaultRegion");
       if (savedRegion && regions[savedRegion]) {
         province.value = savedRegion;
