@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<rect width="512" height="512" rx="80" fill="#101729"/>
+<rect x="54" y="54" width="404" height="404" rx="72" fill="#18233d" stroke="#a97920" stroke-width="10"/>
+<circle cx="256" cy="270" r="154" fill="#2b3142" stroke="#f3c969" stroke-width="14"/>
+<circle cx="256" cy="270" r="126" fill="#171d2c" stroke="#a97920" stroke-width="10"/>
+<g fill="#f3c969">
+<circle cx="256" cy="135" r="8"/><circle cx="351" cy="175" r="8"/><circle cx="391" cy="270" r="8"/>
+<circle cx="351" cy="365" r="8"/><circle cx="256" cy="405" r="8"/><circle cx="161" cy="365" r="8"/>
+<circle cx="121" cy="270" r="8"/><circle cx="161" cy="175" r="8"/>
+</g>
+<circle cx="256" cy="270" r="52" fill="#a97920" stroke="#f3c969" stroke-width="8"/>
+<circle cx="256" cy="270" r="18" fill="#f3c969"/>
+<g stroke="#f3c969" stroke-width="9" stroke-linecap="round">
+<line x1="256" y1="270" x2="256" y2="228"/><line x1="256" y1="270" x2="286" y2="240"/>
+<line x1="256" y1="270" x2="298" y2="270"/><line x1="256" y1="270" x2="286" y2="300"/>
+<line x1="256" y1="270" x2="256" y2="312"/><line x1="256" y1="270" x2="226" y2="300"/>
+<line x1="256" y1="270" x2="214" y2="270"/><line x1="256" y1="270" x2="226" y2="240"/>
+</g>
+<rect x="385" y="184" width="38" height="172" rx="16" fill="#a97920" stroke="#f3c969" stroke-width="6"/>
+<path d="M256 78 l-9 19 -17 -7 7 18 -20 5 19 10 -8 17 22 -4 6 20 6-20 22 4 -8-17 19-10 -20-5 7-18 -17 7z" fill="#f3c969"/>
+</svg>
