@@ -940,7 +940,7 @@
     <div class="modal-inner offer-modal">
       <span class="offer-badge">Partner offer</span>
       <img class="offer-logo" id="offerLogo" src="" alt="">
-      <h2 id="offerHeadline">Claim Your Welcome Bonus</h2>
+      <h2 id="offerHeadline">Welcome Offer</h2>
       <div class="offer-options" id="offerOptions" hidden></div>
       <a class="offer-cta" id="offerLink" href="#" target="_blank" rel="nofollow sponsored noopener">
         View offer
@@ -1148,7 +1148,7 @@
 
       offerLogo.src = offer.logoUrl;
       offerLogo.alt = `${offer.operatorName} logo`;
-      offerHeadline.textContent = "Claim Your Welcome Bonus";
+      offerHeadline.textContent = `${offer.operatorName} Welcome Offer`;
       offerDescription.textContent = unlockedRegion
         ? `${offer.description} Check the operator's availability for ${region.name}.`
         : `${offer.description} Check the operator's availability for your location.`;
