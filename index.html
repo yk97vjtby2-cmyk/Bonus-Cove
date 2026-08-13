@@ -942,7 +942,7 @@
       <img class="offer-logo" id="offerLogo" src="" alt="">
       <h2 id="offerHeadline">Welcome Offer</h2>
       <div class="offer-options" id="offerOptions" hidden></div>
-      <a class="offer-cta" id="offerLink" href="#" target="_blank" rel="nofollow sponsored noopener">
+      <a class="offer-cta" id="offerLink" href="#" rel="nofollow sponsored">
         View offer
       </a>
       <p class="offer-description-below" id="offerDescription">
@@ -951,7 +951,7 @@
       <p class="offer-small" id="offerTerms">
         Eligibility and availability vary. New customers only where stated. Full terms apply.
       </p>
-      <button class="modal-close" type="button">Back to vaults</button>
+      <button class="modal-close" type="button">Close</button>
     </div>
   </dialog>
 <script>
@@ -991,12 +991,6 @@
         approvedRegions: ["AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT"]
       }
     };
-
-    // Temporary single-offer test: all three vaults use the same Betninja offer
-    // and the same BeMob tracking URL (/click/1). The original vault IDs are
-    // retained so vault-open analytics can still show which vault was selected.
-    affiliateOffers["winner-island"] = { ...affiliateOffers.betninja };
-    affiliateOffers.wonaco = { ...affiliateOffers.betninja };
 
     /*
       Replace each approvedRegions list with the exact provinces and territories confirmed by
