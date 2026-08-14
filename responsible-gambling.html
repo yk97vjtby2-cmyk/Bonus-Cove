@@ -1,40 +1,181 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-CA">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#101729">
-<title>Responsible Gambling | Casino Bonus Cove</title>
-<meta name="description" content="Responsible gambling information and Canadian support resources.">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="color-scheme" content="dark">
+<title>Casino Bonus Cove — Responsible Gambling</title>
 <style>
-:root{--navy:#101729;--navy2:#18233d;--gold:#f3c969;--cream:#fff8e8;--muted:#b8c0d4;--white:#fff}
+
+:root{
+  color-scheme:dark;
+  --bg:#050301;
+  --panel:#0d0904;
+  --panel2:#151006;
+  --gold:#f5b51c;
+  --gold2:#ffd76a;
+  --text:#f7f1df;
+  --muted:#c9bfa6;
+  --line:rgba(245,181,28,.28);
+}
 *{box-sizing:border-box}
-html{min-height:100%;background:var(--navy)}
-body{margin:0;min-height:100vh;color:var(--cream);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 50% -10%,rgba(243,201,105,.18),transparent 35rem),linear-gradient(145deg,#0c1221,var(--navy) 48%,#121d34)}
-.wrap{width:min(820px,calc(100% - 28px));margin:0 auto;padding:40px 0 56px}
-.card{padding:28px;border:1px solid rgba(243,201,105,.25);border-radius:18px;background:rgba(255,255,255,.055);box-shadow:0 20px 50px rgba(0,0,0,.34)}
-.kicker{margin:0 0 8px;color:var(--gold);font-size:.78rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
-h1{margin:0 0 20px;font-size:clamp(2rem,7vw,3.3rem);line-height:1}
-h2{margin:26px 0 8px;color:var(--white);font-size:1.15rem}
-p,li{color:var(--muted);line-height:1.65}
-a{color:var(--gold)}
-.back{display:inline-flex;margin-top:24px;padding:12px 16px;border-radius:10px;background:var(--gold);color:#17120a;font-weight:900;text-decoration:none}
-.small{font-size:.82rem;color:#929db5}
-@media(max-width:520px){.wrap{padding-top:18px}.card{padding:20px}}
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  min-height:100%;
+  overflow:hidden;
+  background:transparent;
+  font-family:Arial,Helvetica,sans-serif;
+}
+body{color:var(--text)}
+.viewport{
+  position:relative;
+  width:100vw;
+  height:100vh;
+  height:100svh;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(245,181,28,.08), transparent 42%),
+    linear-gradient(180deg,#080501 0%,#030201 100%);
+}
+.fit-card{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:min(920px,calc(100vw - 24px));
+  transform:translate(-50%,-50%) scale(1);
+  transform-origin:center center;
+  background:linear-gradient(180deg,rgba(23,16,6,.98),rgba(9,6,2,.985));
+  border:1px solid rgba(245,181,28,.58);
+  border-radius:20px;
+  box-shadow:0 18px 50px rgba(0,0,0,.52), inset 0 0 28px rgba(245,181,28,.035);
+  padding:clamp(14px,2.3vw,28px);
+}
+.kicker{
+  margin:0 0 5px;
+  color:var(--gold2);
+  font-size:clamp(10px,1.3vw,13px);
+  font-weight:800;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  text-align:center;
+}
+h1{
+  margin:0;
+  color:var(--gold);
+  text-align:center;
+  font-size:clamp(23px,3.3vw,38px);
+  line-height:1.04;
+}
+.intro{
+  max-width:760px;
+  margin:8px auto 12px;
+  color:var(--muted);
+  text-align:center;
+  font-size:clamp(11px,1.55vw,14px);
+  line-height:1.36;
+}
+.rule{
+  width:min(160px,32%);
+  height:2px;
+  margin:10px auto 13px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+}
+.section{
+  padding:11px 12px;
+  border:1px solid rgba(245,181,28,.18);
+  border-radius:12px;
+  background:rgba(255,255,255,.018);
+}
+.section.wide{grid-column:1/-1}
+h2{
+  margin:0 0 5px;
+  color:var(--gold2);
+  font-size:clamp(12px,1.65vw,16px);
+  line-height:1.15;
+}
+p,li{
+  color:#e7deca;
+  font-size:clamp(10px,1.35vw,13px);
+  line-height:1.32;
+}
+p{margin:0}
+ul{
+  margin:4px 0 0;
+  padding-left:18px;
+}
+li{margin:2px 0}
+.notice{
+  margin-top:10px;
+  padding:9px 11px;
+  text-align:center;
+  border-top:1px solid var(--line);
+  color:#d6ccb7;
+  font-size:clamp(9px,1.2vw,12px);
+  line-height:1.3;
+}
+.notice strong{color:var(--gold2)}
+@media (max-width:620px){
+  .fit-card{
+    width:calc(100vw - 14px);
+    border-radius:15px;
+    padding:12px;
+  }
+  .grid{gap:7px}
+  .section{padding:9px}
+}
+@media (max-width:430px){
+  .grid{grid-template-columns:1fr 1fr}
+  .intro{margin-bottom:9px}
+  .section{padding:8px}
+}
+
 </style>
 </head>
-<body><main class="wrap"><section class="card">
-<p class="kicker">Casino Bonus Cove</p>
-<h1>Responsible Gambling</h1>
+<body>
+<div class="viewport">
+  <main class="fit-card" id="fitCard" role="document">
+    <p class="kicker">Casino Bonus Cove</p>
+    <h1>Responsible Gambling</h1>
+    <div class="rule"></div>
+    <p class="intro">Gambling should be entertainment, not a source of income. If it stops feeling enjoyable or becomes difficult to control, stop and use the support and limit tools available to you.</p>
+    <div class="grid">
+      <section class="section"><h2>Keep gambling affordable</h2><p>Decide what you can afford to lose before you start. Keep gambling money separate from money needed for housing, food, bills, savings, debt payments and other essentials.</p></section><section class="section"><h2>Set time & spend limits</h2><p>Use deposit, loss, wager and session limits where available. Decide your time limit before playing and take regular breaks rather than extending a session to recover losses.</p></section><section class="section"><h2>Do not chase losses</h2><p>Losing is part of gambling. Increasing stakes or continuing to play in an attempt to win back money can increase harm. A previous loss does not make a future win more likely.</p></section><section class="section"><h2>Avoid gambling when impaired</h2><p>Do not gamble when alcohol, drugs, strong emotions, stress or lack of sleep could affect judgement. Never borrow money or use credit you cannot comfortably repay to continue gambling.</p></section><section class="section"><h2>Use operator safety tools</h2><p>Where available, use cooling-off periods, reality checks, account limits and self-exclusion. If you self-exclude, do not try to bypass the restriction by opening another account.</p></section><section class="section"><h2>Age & location</h2><p>Only gamble if you meet the legal minimum age and gambling is permitted where you are located. In Canada this is generally 18+ or 19+ depending on the province or territory.</p></section><section class="section"><h2>Recognise warning signs</h2><p>Warning signs can include spending more than planned, hiding gambling, borrowing money, missing work or responsibilities, feeling unable to stop, or gambling to escape problems.</p></section><section class="section"><h2>Get support</h2><p>If gambling is causing harm, stop gambling and seek support from a trusted person and an appropriate responsible-gambling or health service in your province or territory. Operator support teams may also provide self-exclusion and account-control options.</p></section>
+    </div>
+    <div class="notice"><strong>18+/19+ depending on province or territory.</strong> Gambling involves risk and losses are possible. Only use money you can afford to lose.</div>
+  </main>
+</div>
+<script>
 
-<p>Gambling should be entertainment, not a way to earn money.</p>
-<h2>Safer gambling</h2>
-<ul><li>Set a spending limit before you start.</li><li>Set time limits and take regular breaks.</li><li>Never chase losses.</li><li>Do not gamble with money needed for essential expenses.</li><li>Stop and seek support if gambling is causing harm.</li></ul>
-<h2>Canadian support</h2>
-<p><a href="https://responsiblegambling.org/" target="_blank" rel="noopener noreferrer">Responsible Gambling Council (Canada)</a></p>
-<p><a href="https://www.gamtalk.org/" target="_blank" rel="noopener noreferrer">GamTalk / Evive community support</a></p>
-<p>Province- and territory-specific support and self-exclusion services vary across Canada. Use the location selector on the main page to view the relevant local support information.</p>
+(function(){
+  const card=document.getElementById('fitCard');
+  let raf=0;
+  function fit(){
+    cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(()=>{
+      card.style.transform='translate(-50%,-50%) scale(1)';
+      const pad=10;
+      const aw=Math.max(1,window.innerWidth-pad*2);
+      const ah=Math.max(1,window.innerHeight-pad*2);
+      const cw=card.offsetWidth;
+      const ch=card.scrollHeight;
+      const scale=Math.min(1,aw/cw,ah/ch);
+      card.style.transform=`translate(-50%,-50%) scale(${scale})`;
+    });
+  }
+  addEventListener('resize',fit,{passive:true});
+  addEventListener('orientationchange',fit,{passive:true});
+  addEventListener('load',fit);
+  document.fonts && document.fonts.ready && document.fonts.ready.then(fit);
+  fit();
+})();
 
-<a class="back" href="index.html">Return to Casino Bonus Cove</a>
-</section></main></body></html>
+</script>
+</body>
+</html>
