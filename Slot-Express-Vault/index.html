@@ -838,7 +838,7 @@
 
     .slot-modal {
       position: relative;
-      width: min(900px, 94vw, 102dvh);
+      width: min(940px, 96vw, 108dvh);
       max-height: 96dvh;
       overflow: hidden;
       overscroll-behavior: none;
@@ -855,7 +855,7 @@
     .slot-overlay.show .slot-modal { transform: none; }
 
     .slot-modal-inner {
-      padding: clamp(7px, 1.15dvh, 13px);
+      padding: clamp(8px, 1.25dvh, 15px);
     }
 
     .slot-close {
@@ -900,7 +900,7 @@
 
     .slot-offer-wrap {
       position: relative;
-      width: min(96%, 780px);
+      width: min(99%, 860px);
       margin: 0 auto;
     }
 
@@ -915,10 +915,10 @@
 
     .slot-offer-link {
       position: absolute;
-      left: 19.2%;
-      bottom: 4.8%;
-      width: 61.5%;
-      height: 15.5%;
+      left: 14%;
+      bottom: 3.8%;
+      width: 72%;
+      height: 19.5%;
       border-radius: 999px;
       text-indent: -9999px;
       overflow: hidden;
@@ -930,8 +930,8 @@
     }
 
     .slot-favourites {
-      margin-top: clamp(5px, .8dvh, 9px);
-      padding: clamp(5px, .85dvh, 9px) 6px 0;
+      margin-top: clamp(4px, .65dvh, 7px);
+      padding: clamp(4px, .7dvh, 7px) 6px 0;
       border-top: 1px solid rgba(245,181,28,.25);
     }
 
@@ -942,7 +942,7 @@
       gap: 10px;
       margin: 0 0 clamp(7px, 1dvh, 12px);
       color: #ffbd20;
-      font-size: clamp(14px, 2.2vw, 28px);
+      font-size: clamp(13px, 1.9vw, 23px);
       font-weight: 1000;
       letter-spacing: .2px;
       text-align: center;
@@ -961,7 +961,7 @@
     .slot-game-grid {
       display: grid;
       grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: clamp(5px, .9vw, 9px);
+      gap: clamp(4px, .7vw, 7px);
     }
 
     .slot-game-card {
@@ -970,10 +970,10 @@
     }
 
     .slot-game-art {
-      aspect-ratio: 1.18 / 1;
+      aspect-ratio: 1.3 / 1;
       overflow: hidden;
       border: 2px solid #d9990a;
-      border-radius: clamp(8px, 1.2vw, 14px);
+      border-radius: clamp(7px, 1vw, 12px);
       background: #071329;
       box-shadow: 0 5px 12px rgba(0,0,0,.26);
       padding: 0;
@@ -1043,11 +1043,11 @@
 
     @media (max-width: 620px) {
       .slot-overlay { padding: 5px; }
-      .slot-modal { width: min(92vw, 70dvh); max-height: 95dvh; border-radius: 16px; }
+      .slot-modal { width: min(95vw, 74dvh); max-height: 95dvh; border-radius: 16px; }
       .slot-modal-inner { padding: 6px; }
       .slot-brand-logo { margin-bottom: 5px; }
-      .slot-game-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 3px; }
-      .slot-game-art { aspect-ratio: 1.18 / 1; padding: 0; border-radius: 8px; }
+      .slot-game-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 2px; }
+      .slot-game-art { aspect-ratio: 1.3 / 1; padding: 0; border-radius: 7px; }
       .slot-fav-title { font-size: 15px; margin-bottom: 6px; }
       .slot-modal-footer { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; margin-top: 7px; padding-top: 3px; }
       .slot-trust { color: #f7c95c; font-size: 7.1px; gap: 1px; line-height: 1.06; font-weight: 600; letter-spacing: 0; }
@@ -1068,7 +1068,7 @@
     @media (max-width: 560px) and (orientation: portrait) {
       .slot-overlay { padding: 4px; }
       .slot-modal {
-        width: min(96vw, 76dvh);
+        width: min(97vw, 80dvh);
         max-height: 96dvh;
         border-radius: 15px;
       }
@@ -1079,7 +1079,7 @@
         width: min(48%, 210px);
         max-height: 8.5dvh;
       }
-      .slot-offer-wrap { width: 98%; }
+      .slot-offer-wrap { width: 100%; }
 
       .slot-favourites {
         margin-top: 4px;
@@ -1093,13 +1093,13 @@
 
       .slot-game-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        column-gap: 7px;
-        row-gap: 5px;
+        column-gap: 5px;
+        row-gap: 4px;
       }
       .slot-game-art {
-        aspect-ratio: 1.18 / 1;
-        border-width: 2px;
-        border-radius: 9px;
+        aspect-ratio: 1.3 / 1;
+        border-width: 1.5px;
+        border-radius: 8px;
       }
       .slot-game-art img { border-radius: 7px; }
 
@@ -1246,21 +1246,17 @@
     </footer>
   </main>
 
-  <div class="slot-overlay" id="offerModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Slot Express welcome offer">
+  <div class="slot-overlay" id="offerModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Welcome offer">
     <div class="slot-modal">
       <button class="slot-close" id="offerClose" type="button" aria-label="Close offer">×</button>
       <div class="slot-modal-inner">
-        <div class="slot-brand-logo" aria-label="Slot Express">
-          <img alt="Slot Express" src="images/slot-express-logo-popup.png">
-        </div>
-
         <div class="slot-offer-wrap">
           <img alt="Your revealed offer: Welcome Package, get up to $1,000 plus 200 free spins" src="images/slot-express-welcome-offer.png">
-          <a class="slot-offer-link" id="offerLink" href="#" rel="nofollow sponsored" aria-label="Claim Slot Express welcome offer">Claim welcome offer</a>
+          <a class="slot-offer-link" id="offerLink" href="#" rel="nofollow sponsored" aria-label="Claim welcome offer">Claim welcome offer</a>
         </div>
 
-        <section class="slot-favourites" aria-label="Fan-favourite slots">
-          <div class="slot-fav-title">FAN FAVOURITE SLOTS</div>
+        <section class="slot-favourites" aria-label="Fan Favourite Games">
+          <div class="slot-fav-title">FAN FAVOURITE GAMES</div>
           <div class="slot-game-grid">
           <article class="slot-game-card">
             <div class="slot-game-art"><img alt="Gates of Olympus 1000" src="images/gates-of-olympus-1000.png"></div>
