@@ -1432,7 +1432,7 @@
       display: none;
     }
 
-    /* Mobile/tablet CTA and gold-scrollbar treatment */
+    /* Mobile/tablet integrated offer card + gold scrollbar */
     @media (max-width: 980px) {
       .slot-modal {
         overflow-x: hidden;
@@ -1458,14 +1458,36 @@
         border-radius: 999px;
       }
 
+      /*
+        One bordered panel now contains both the offer artwork and CTA.
+        The artwork is cropped just above its baked-in button, then the
+        HTML CTA overlaps that lower edge so the gold border/background
+        visually flows around the whole offer.
+      */
+      .slot-offer-wrap {
+        width: min(98%, 780px);
+        padding: 0 0 clamp(34px, 6.6vw, 56px);
+        overflow: hidden;
+        border: 2px solid #f5b51c;
+        border-radius: clamp(13px, 2.2vw, 20px);
+        background:
+          radial-gradient(circle at 50% 0%, rgba(24,76,173,.30), transparent 45%),
+          linear-gradient(180deg, #061637 0%, #020817 100%);
+        box-shadow:
+          inset 0 0 0 1px rgba(255,215,96,.16),
+          0 8px 24px rgba(0,0,0,.42),
+          0 0 18px rgba(245,181,28,.10);
+      }
+
       .slot-offer-media {
         width: 100%;
-        aspect-ratio: 1252 / 378;
+        aspect-ratio: 1252 / 397;
         overflow: hidden;
-        border-radius: clamp(10px, 1.5vw, 18px);
+        border-radius: 0;
       }
 
       .slot-offer-media img {
+        display: block;
         width: 100%;
         height: auto;
         border-radius: 0;
@@ -1476,35 +1498,53 @@
       }
 
       .slot-mobile-cta {
+        position: absolute;
+        z-index: 3;
+        left: 50%;
+        bottom: clamp(7px, 1.5vw, 13px);
+        transform: translateX(-50%);
         display: flex;
-        width: 92%;
-        min-height: clamp(70px, 14vw, 112px);
+        width: min(64%, 430px);
+        min-height: clamp(58px, 10vw, 82px);
         align-items: center;
         justify-content: center;
-        gap: clamp(8px, 1.5vw, 16px);
-        margin: clamp(8px, 1.4vw, 14px) auto 4px;
-        padding: 10px clamp(14px, 3vw, 28px);
-        border: 3px solid #f5b51c;
+        gap: clamp(4px, .9vw, 9px);
+        margin: 0;
+        padding: clamp(7px, 1.35vw, 11px) clamp(14px, 2.6vw, 24px);
+        border: 2px solid #ffe078;
         border-radius: 999px;
-        background: linear-gradient(180deg, #ffe778 0%, #ffc52e 45%, #e9a40a 100%);
+        background: linear-gradient(180deg, #ffe778 0%, #ffc52e 48%, #e9a40a 100%);
         box-shadow:
-          inset 0 2px 0 rgba(255,255,255,.60),
-          inset 0 -3px 0 rgba(115,68,0,.28),
-          0 5px 16px rgba(0,0,0,.35);
-        color: #08142c;
-        font-size: clamp(28px, 7vw, 56px);
+          inset 0 2px 0 rgba(255,255,255,.58),
+          inset 0 -2px 0 rgba(115,68,0,.28),
+          0 4px 13px rgba(0,0,0,.42),
+          0 0 12px rgba(245,181,28,.18);
+        color: #071329;
+        font-size: clamp(18px, 4.1vw, 30px);
         font-weight: 1000;
-        line-height: .95;
-        letter-spacing: -.025em;
+        line-height: .92;
+        letter-spacing: -.015em;
         text-align: center;
         text-decoration: none;
         text-transform: uppercase;
         text-shadow: 0 1px 0 rgba(255,255,255,.28);
       }
 
+      .slot-mobile-cta-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+      }
+
+      .slot-mobile-cta-label span {
+        display: block;
+      }
+
       .slot-mobile-cta-arrow {
         flex: 0 0 auto;
-        font-size: 1.25em;
+        font-size: 1.05em;
         line-height: .8;
       }
 
@@ -1520,10 +1560,22 @@
         max-height: 94dvh;
       }
 
+      .slot-offer-wrap {
+        width: 99%;
+        padding-bottom: 38px;
+        border-radius: 13px;
+      }
+
+      .slot-offer-media {
+        aspect-ratio: 1252 / 400;
+      }
+
       .slot-mobile-cta {
-        width: 95%;
-        min-height: 72px;
-        font-size: clamp(28px, 7.7vw, 38px);
+        width: 66%;
+        min-height: 58px;
+        bottom: 6px;
+        padding: 7px 12px;
+        font-size: clamp(17px, 5vw, 23px);
       }
     }
 
@@ -1665,7 +1717,7 @@
           <img alt="Lucky Days welcome offer: up to $1,500 plus 100 free spins" src="assets/image-02.png">
         </div>
           <a class="slot-offer-link" id="offerLink" href="#" rel="nofollow sponsored" aria-label="Claim Lucky Days Casino welcome offer">Claim welcome offer</a>
-          <a class="slot-mobile-cta" id="mobileOfferLink" href="#" rel="nofollow sponsored" aria-label="Claim Lucky Days Casino welcome offer"><span>CLAIM WELCOME OFFER</span><span class="slot-mobile-cta-arrow" aria-hidden="true">›</span></a>
+          <a class="slot-mobile-cta" id="mobileOfferLink" href="#" rel="nofollow sponsored" aria-label="Claim Lucky Days Casino welcome offer"><span class="slot-mobile-cta-label"><span>CLAIM WELCOME</span><span>OFFER</span></span><span class="slot-mobile-cta-arrow" aria-hidden="true">›</span></a>
         </div>
 
         <section class="slot-favourites" aria-label="Fan-favourite slots">
