@@ -1679,6 +1679,228 @@
       }
     }
 
+
+    /* Requested front-page and footer refinements */
+    .hero .hero-copy {
+      color: #f7c95c;
+      font-size: clamp(1.12rem, 2.25vw, 1.36rem);
+      font-weight: 850;
+      line-height: 1.5;
+      text-shadow: 0 0 14px rgba(245,181,28,.16);
+    }
+
+    .ontario-excluded {
+      margin: 0 auto 9px;
+      color: #f7c95c;
+      font-size: .86rem;
+      font-weight: 900;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 480px) {
+      .hero .hero-copy {
+        font-size: 1.08rem;
+      }
+
+      .ontario-excluded {
+        font-size: .8rem;
+      }
+    }
+
+
+    /* Lucky Days logo: render supplied dark wordmark in white */
+    .offer-logo {
+      filter: brightness(0) invert(1);
+    }
+
+
+    /* =========================================================
+       Lucky Days offer popup — reference layout
+       ========================================================= */
+    #offerModal {
+      width: min(775px, calc(100% - 24px));
+      max-height: 96dvh;
+      padding: 0;
+      overflow: auto;
+      border: 1px solid rgba(243, 201, 105, .48);
+      border-radius: 20px;
+      background: #1b2948;
+      color: #fff8e8;
+      box-shadow: 0 28px 80px rgba(0,0,0,.65);
+    }
+
+    #offerModal::backdrop {
+      background: rgba(1, 7, 20, .84);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    #offerModal .offer-modal {
+      padding: 30px 30px 29px;
+      text-align: center;
+    }
+
+    #offerModal .offer-badge {
+      margin: 0 auto 24px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: rgba(69, 196, 138, .14);
+      color: #8fe6bd;
+      font-size: .78rem;
+      font-weight: 950;
+      letter-spacing: .12em;
+    }
+
+    #offerModal .offer-logo {
+      display: block;
+      width: min(330px, 72%);
+      height: 90px;
+      margin: 0 auto -16px;
+      object-fit: contain;
+      object-position: center;
+      background: transparent;
+      filter: brightness(0) invert(1);
+    }
+
+    #offerModal .offer-modal h2 {
+      margin: 0 0 22px;
+      color: #fff8e8;
+      font-size: clamp(2.2rem, 5vw, 3.25rem);
+      font-weight: 950;
+      line-height: .95;
+      letter-spacing: -.025em;
+      text-transform: uppercase;
+    }
+
+    #offerModal .offer-options {
+      display: grid;
+      gap: 10px;
+      margin: 0 0 22px;
+      text-align: left;
+    }
+
+    #offerModal .offer-option {
+      padding: 18px 19px 17px;
+      border: 1px solid rgba(226, 188, 92, .48);
+      border-radius: 14px;
+      background: #102140;
+    }
+
+    #offerModal .offer-option strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #ffd05a;
+      font-size: 1.12rem;
+      font-weight: 950;
+      line-height: 1.15;
+    }
+
+    #offerModal .offer-option span {
+      display: block;
+      color: #fff;
+      font-size: 1.03rem;
+      line-height: 1.35;
+    }
+
+    #offerModal .offer-cta {
+      display: flex;
+      width: 100%;
+      min-height: 73px;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0 18px;
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #ffe39b 0%, #f3c969 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.35);
+      color: #17120a;
+      font-size: 1.08rem;
+      font-weight: 950;
+      line-height: 1.15;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    #offerModal .offer-description-below {
+      margin: 0 0 11px;
+      color: #bdc5d7 !important;
+      font-size: .84rem;
+      line-height: 1.45;
+    }
+
+    #offerModal .offer-small {
+      margin: 0 0 16px;
+      color: #98a3ba !important;
+      font-size: .76rem;
+      line-height: 1.45;
+    }
+
+    #offerModal .modal-close {
+      min-height: 52px;
+      margin: 0;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 11px;
+      background: linear-gradient(180deg, #ffd86d, #f3c14c);
+      color: #17120a;
+      font-size: 1rem;
+      font-weight: 950;
+      cursor: pointer;
+    }
+
+    @media (max-width: 560px) {
+      #offerModal {
+        width: calc(100% - 18px);
+        border-radius: 17px;
+      }
+
+      #offerModal .offer-modal {
+        padding: 22px 18px 21px;
+      }
+
+      #offerModal .offer-badge {
+        margin-bottom: 18px;
+        font-size: .7rem;
+      }
+
+      #offerModal .offer-logo {
+        width: min(290px, 84%);
+        height: 78px;
+        margin-bottom: -13px;
+      }
+
+      #offerModal .offer-modal h2 {
+        margin-bottom: 19px;
+        font-size: clamp(2rem, 11vw, 2.7rem);
+      }
+
+      #offerModal .offer-option {
+        padding: 15px 16px;
+      }
+
+      #offerModal .offer-option strong {
+        font-size: 1rem;
+      }
+
+      #offerModal .offer-option span {
+        font-size: .94rem;
+      }
+
+      #offerModal .offer-cta {
+        min-height: 64px;
+        font-size: .96rem;
+      }
+
+      #offerModal .offer-description-below {
+        font-size: .77rem;
+      }
+
+      #offerModal .offer-small {
+        font-size: .69rem;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -1739,44 +1961,10 @@
         </button>
       </article>
     </section>
-
-    <form class="gate location-gate" id="locationGate">
-      <div>
-        <label for="province">Optional: your province or territory</label>
-        <select id="province" name="province">
-          <option value="">Select your location (optional)</option>
-          <option value="AB">Alberta</option>
-          <option value="BC">British Columbia</option>
-          <option value="MB">Manitoba</option>
-          <option value="NB">New Brunswick</option>
-          <option value="NL">Newfoundland and Labrador</option>
-          <option value="NS">Nova Scotia</option>
-          <option value="NT">Northwest Territories</option>
-          <option value="NU">Nunavut</option>
-          <option value="ON">Ontario</option>
-          <option value="PE">Prince Edward Island</option>
-          <option value="QC">Quebec</option>
-          <option value="SK">Saskatchewan</option>
-          <option value="YT">Yukon</option>
-        </select>
-        <div class="location-details" id="locationDetails" aria-live="polite">
-          Canada: legal gambling age and licensing rules vary by location.
-        </div>
-      </div>
-      <p class="location-copy">
-        Please select your local province or territory to check your area's legal gambling age,
-        local support service and licensing reminder. Selection does not determine
-        your eligibility for an operator's offer.
-      </p>
-    </form>
-
     <aside class="support-card" aria-labelledby="supportTitle">
       <div>
         <h2 id="supportTitle">Play responsibly</h2>
-        <p id="supportCopy">
-          Set a spending limit, never chase losses and take regular breaks. Select your location
-          to see the appropriate local support service.
-        </p>
+        <p id="supportCopy">Set a spending limit, never chase losses and take regular breaks. Canadian gambling support resources are available below.</p>
       </div>
       <div class="support-actions" id="supportActions">
         <a class="support-link" href="https://responsiblegambling.org/for-the-public/problem-gambling-help/help-for-canadians/" target="_blank" rel="noopener">
@@ -1789,8 +1977,9 @@
 
     <footer class="legal">
       <p class="not-a-prize">
-        This is an information experience—not a game, draw, prize or cash award.
+        This is an information experience. Not a game, draw, prize or cash award.
       </p>
+      <p class="ontario-excluded"><strong>Ontario is excluded from this offer.</strong></p>
       <strong>18+/19+ depending on province or territory.</strong>
       Gambling involves risk and losses are possible. Only use money you can afford to lose.
       Availability, licensing and advertising rules vary across Canada. Verify every operator,
@@ -1804,135 +1993,52 @@
     </footer>
   </main>
 
-  <div class="slot-overlay" id="offerModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Lucky Days Casino welcome offer">
-    <div class="slot-modal">
-<div class="slot-modal-inner">
-        <div class="slot-brand-logo" aria-label="Lucky Days Casino">
-          <img alt="Lucky Days" src="assets/image-01.png">
-          <div class="slot-brand-casino" aria-hidden="true">CASINO</div>
-        </div>
-
-        <div class="slot-offer-wrap">
-          <div class="slot-offer-media">
-          <img alt="Lucky Days welcome offer: up to $1,500 plus 100 free spins" src="assets/image-02.png">
-        </div>
-          <a class="slot-offer-link" id="offerLink" href="#" rel="nofollow sponsored" aria-label="Claim Lucky Days Casino welcome offer">Claim welcome offer</a>
-          <a class="slot-mobile-cta" id="mobileOfferLink" href="#" rel="nofollow sponsored" aria-label="Claim Lucky Days Casino welcome offer"><span>CLAIM WELCOME OFFER</span><span class="slot-mobile-cta-arrow" aria-hidden="true">›</span></a>
-        </div>
-
-        <section class="slot-favourites" aria-label="Fan-favourite slots">
-          <div class="slot-fav-title">FAN FAVOURITE SLOTS</div>
-          <div class="slot-game-grid">
-          <article class="slot-game-card">
-            <div class="slot-game-art"><img alt="Gates of Olympus 1000" src="assets/image-03.png"></div>
-          </article>
-          <article class="slot-game-card">
-            <div class="slot-game-art"><img alt="Big Bass Splash" src="assets/image-04.png"></div>
-          </article>
-          <article class="slot-game-card">
-            <div class="slot-game-art"><img alt="Sugar Rush" src="assets/image-05.png"></div>
-          </article>
-          <article class="slot-game-card">
-            <div class="slot-game-art"><img alt="Money Train 4" src="assets/image-06.png"></div>
-          </article>
-          <article class="slot-game-card">
-            <div class="slot-game-art"><img alt="Le Bandit" src="assets/image-07.png"></div>
-          </article>
-          <article class="slot-game-card">
-            <div class="slot-game-art"><img alt="Gates of Olympus Roulette" src="assets/image-08.jpg"></div>
-          </article>
-          </div>
-        </section>
-
-        <div class="slot-modal-footer">
-          <div class="slot-trust"><span class="slot-trust-icon">🔞</span><span class="slot-trust-text">Gamble Responsibly</span></div>
-          <div class="slot-trust"><span class="slot-trust-icon">🔒</span><span class="slot-trust-text">Secure &amp; Trusted</span></div>
-          <div class="slot-trust"><span class="slot-trust-icon">🎧</span><span class="slot-trust-text">24/7 Support</span></div>
-          <div class="slot-trust"><span class="slot-trust-text">Available in Canada<small>(excluding Ontario)</small></span></div>
-          <div class="slot-legal">Terms and conditions apply. New players only. Minimum deposit and wagering requirements may apply. Check the operator's full terms before claiming an offer. Please play responsibly.</div>
-        </div>
-      </div>
+  <dialog id="offerModal">
+    <div class="modal-inner offer-modal">
+      <span class="offer-badge">Partner offer</span>
+      <img class="offer-logo" id="offerLogo" src="data:image/png;base64,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" alt="Lucky Days logo">
+      <h2 id="offerHeadline">Casino</h2>
+      <div class="offer-options" id="offerOptions" hidden></div>
+      <a class="offer-cta" id="offerLink" href="#" target="_blank" rel="nofollow sponsored noopener">
+        View offer at Lucky Days
+      </a>
+      <p class="offer-description-below" id="offerDescription">
+        Available when creating an account (Excluding Ontario)
+      </p>
+      <p class="offer-small" id="offerTerms">
+        Offer shown at signup. Eligibility and availability vary by location. New customers only. Full terms apply.
+      </p>
+      <button class="modal-close" type="button">Back to vaults</button>
     </div>
-  </div>
+  </dialog>
 
 <script>
     const affiliateOffers = {
-      "winner-island": {
-        operatorName: "Winner Island",
-        logoUrl: "images/winner-island-logo.png",
-        description: "Available when creating an account.",
-        options: [
-          { title: "Welcome package", details: "$2,500 + 100 free spins in Book of Dead" }
-        ],
-        terms: "Offer shown at signup. Eligibility and availability vary by location. New customers only. Full terms apply.",
-        affiliateUrl: "https://track.casino-bonus-cove.com/click/3",
-        approvedRegions: ["AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT"]
-      },
       luckydays: {
         operatorName: "Lucky Days",
-        logoUrl: "images/lucky-days-logo-config.png",
-        description: "Available when creating an account.",
+        logoUrl: "data:image/png;base64,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",
+        description: "Available when creating an account. Available in Canada excluding Ontario.",
         options: [
           { title: "Welcome package", details: "Up to $1,500 + 100 free spins" }
         ],
         terms: "Offer shown at signup. Eligibility and availability vary by location. New customers only. Full terms apply.",
-        affiliateUrl: "https://track.casino-bonus-cove.com/click",
-        approvedRegions: ["AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "PE", "QC", "SK", "YT"]
-      },
-      wonaco: {
-        operatorName: "Wonaco",
-        logoUrl: "images/wonaco-logo.png",
-        description: "Choose one of these welcome bonus options when signing up at Wonaco:",
-        options: [
-          { title: "Welcome package", details: "250% up to $3,750 + 200 free spins" },
-          { title: "Sport First Deposit Bonus", details: "100% up to $150" }
-        ],
-        terms: "Bonus availability, deposit requirements, wagering requirements and eligibility may vary. New customers only where stated. Check the operator's current full terms before claiming.",
-        affiliateUrl: "https://track.casino-bonus-cove.com/click/2",
-        approvedRegions: ["AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT"]
+        affiliateUrl: "https://track.casino-bonus-cove.com/click"
       }
     };
 
-    /*
-      Replace each approvedRegions list with the exact provinces and territories confirmed by
-      that operator or affiliate manager before running paid traffic.
-    */
-
-    const regions = {
-      AB: { name: "Alberta", age: 18, supportName: "Alberta Problem Gambling Resources Network", supportPhone: "1-866-461-1259", supportUrl: "https://responsiblegambling.org/for-the-public/problem-gambling-help/help-for-canadians/" },
-      BC: { name: "British Columbia", age: 19, supportName: "Gambling Support BC", supportPhone: "1-888-795-6111", supportUrl: "https://www.gamblingsupportbc.ca/" },
-      MB: { name: "Manitoba", age: 18, supportName: "Manitoba Problem Gambling Helpline", supportPhone: "1-800-463-1554", supportUrl: "https://www.gov.mb.ca/contact/urgent_toll_free.html" },
-      NB: { name: "New Brunswick", age: 19, supportName: "New Brunswick Gambling Information Line", supportPhone: "1-800-461-1234", supportUrl: "https://www2.gnb.ca/content/gnb/en/departments/finance/lotteries_and_gaming_corporation/responsible_gaming.html" },
-      NL: { name: "Newfoundland and Labrador", age: 19, supportName: "Newfoundland and Labrador Gambling Help Line", supportPhone: "811", supportUrl: "https://www.gov.nl.ca/hcs/mentalhealth-committee/mentalhealth/helplines-and-navigator/" },
-      NS: { name: "Nova Scotia", age: 19, supportName: "Nova Scotia Mental Health and Addictions Crisis Line", supportPhone: "1-888-429-8167", supportUrl: "https://mha.nshealth.ca/en/topics/substance-use-and-gambling/gambling" },
-      NT: { name: "Northwest Territories", age: 19, supportName: "Northwest Territories General Help Line", supportPhone: "1-800-661-0844", supportUrl: "https://responsiblegambling.org/for-the-public/problem-gambling-help/help-for-canadians/" },
-      NU: { name: "Nunavut", age: 19, supportName: "Kamatsiaqtut Help Line", supportPhone: "1-800-265-3333", supportUrl: "https://www.gov.nu.ca/en/health/mental-health-resources" },
-      ON: { name: "Ontario", age: 19, supportName: "ConnexOntario", supportPhone: "1-866-531-2600", supportUrl: "https://connexontario.ca/", ontario: true },
-      PE: { name: "Prince Edward Island", age: 19, supportName: "PEI Gambling Support Line", supportPhone: "1-855-255-4255", supportUrl: "https://peigamblingsupport.princeedwardisland.ca/" },
-      QC: { name: "Quebec", age: 18, supportName: "Gambling: Help and Referral", supportPhone: "1-800-461-0140", supportUrl: "https://aidejeu.ca/en/" },
-      SK: { name: "Saskatchewan", age: 19, supportName: "Saskatchewan Problem Gambling Helpline", supportPhone: "1-800-306-6789", supportUrl: "https://www.saskatchewan.ca/residents/health/emergency-medical-services/problem-gambling-help-line" },
-      YT: { name: "Yukon", age: 19, supportName: "Mental Wellness and Substance Use Services", supportPhone: "1-866-456-3838", supportUrl: "https://yukon.ca/en/health-and-wellness/health-concerns-diseases-and-conditions/get-help-alcohol-and-drug-addiction" }
-    };
-
-    /*
-      Add a partnerName and partnerUrl only after receiving written confirmation that the
-      operator and advertisement are permitted for that specific province or territory.
-      Do not insert one national destination URL as a substitute for location approval.
-    */
-
-    const gate = document.querySelector("#locationGate");
-    const province = document.querySelector("#province");
-    const locationDetails = document.querySelector("#locationDetails");
     const status = document.querySelector("#status");
-    const supportCopy = document.querySelector("#supportCopy");
-    const supportActions = document.querySelector("#supportActions");
     const vaultCards = [...document.querySelectorAll(".vault-card")];
     const vaultButtons = [...document.querySelectorAll(".vault-button")];
     const result = document.querySelector("#vaultResult");
+
     const offerModal = document.querySelector("#offerModal");
+    const offerLogo = document.querySelector("#offerLogo");
+    const offerHeadline = document.querySelector("#offerHeadline");
+    const offerDescription = document.querySelector("#offerDescription");
+    const offerOptions = document.querySelector("#offerOptions");
     const offerLink = document.querySelector("#offerLink");
-    const mobileOfferLink = document.querySelector("#mobileOfferLink");
-    let unlockedRegion = "";
+    const offerTerms = document.querySelector("#offerTerms");
+
     let activeOffer = null;
     let activeVault = "";
 
@@ -1964,14 +2070,6 @@
       window.dispatchEvent(new CustomEvent("vaultTrackingEvent", { detail: eventData }));
     }
 
-    const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (character) => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#039;"
-    })[character]);
-
     function closeVaults() {
       vaultCards.forEach((card) => card.classList.remove("open"));
       vaultButtons.forEach((button) => button.setAttribute("aria-expanded", "false"));
@@ -1979,101 +2077,63 @@
       result.replaceChildren();
     }
 
-    function resetVaults(message = "") {
-      vaultButtons.forEach((button) => { button.disabled = false; });
-      vaultCards.forEach((card) => {
-        card.querySelector(".open-label").textContent = "Open this vault";
-      });
-      closeVaults();
-      status.className = "status success";
-      status.textContent = message;
+    function buildAffiliateUrl(offer) {
+      return offer.affiliateUrl;
     }
 
-    function updateLocationInfo() {
-      const region = regions[province.value];
-      unlockedRegion = province.value;
-
-      if (region) {
-        const telephone = region.supportPhone.replace(/[^\d+]/g, "");
-        locationDetails.textContent = `${region.name}: legal gambling age ${region.age}+. Check that the operator is permitted or appropriately authorized for this location.`;
-        supportCopy.textContent = `Help in ${region.name}: ${region.supportName}. Free or confidential support may be available. Set limits, never chase losses and stop if gambling is causing harm.`;
-        supportActions.innerHTML = `
-          <a class="support-link primary" href="tel:${escapeHTML(telephone)}">Call ${escapeHTML(region.supportPhone)}</a>
-          <a class="support-link" href="${escapeHTML(region.supportUrl)}" target="_blank" rel="noopener">Local support website</a>
-        `;
-        trackEvent("location_selected", { region: unlockedRegion });
-      } else {
-        locationDetails.textContent = "Canada: legal gambling age and licensing rules vary by location.";
-        supportCopy.textContent = "Set a spending limit, never chase losses and take regular breaks. Select your location to see the appropriate local support service.";
-        supportActions.innerHTML = `
-          <a class="support-link" href="https://responsiblegambling.org/for-the-public/problem-gambling-help/help-for-canadians/" target="_blank" rel="noopener">Canada support directory</a>
-        `;
-      }
-
-      try {
-        if (unlockedRegion) {
-          localStorage.setItem("canadaVaultRegion", unlockedRegion);
-        } else {
-          localStorage.removeItem("canadaVaultRegion");
-        }
-      } catch (error) {
-        // The experience still works if browser storage is unavailable.
-      }
-
-      resetVaults();
-    }
-
-    function buildAffiliateUrl(offer, vaultId) {
-      const clickReference = trafficContext.clickId || "landing-page";
-      const subReference = trafficContext.creative || trafficContext.zoneId || vaultId;
-      return offer.affiliateUrl
-        .replace("addclickidhere", encodeURIComponent(clickReference))
-        .replace("addsubidhere", encodeURIComponent(subReference));
-    }
-
-    function showOffer(region, vaultId) {
+    function showOffer(vaultId) {
       const offer = affiliateOffers[vaultId];
       if (!offer) return;
+
       activeOffer = offer;
       activeVault = vaultId;
 
-      const hasLink = /^https?:\/\//i.test(offer.affiliateUrl);
-      const isApproved = !unlockedRegion || offer.approvedRegions.includes(unlockedRegion);
-      const isConfigured = hasLink && isApproved;
+      offerLogo.src = offer.logoUrl;
+      offerLogo.alt = `${offer.operatorName} logo`;
+      offerHeadline.textContent = "Casino";
+      offerDescription.textContent = offer.description;
+      offerTerms.textContent = offer.terms;
 
-      if (isConfigured) {
-        const destinationUrl = buildAffiliateUrl(offer, vaultId);
-        [offerLink, mobileOfferLink].forEach((link) => {
-          link.href = destinationUrl;
-          link.removeAttribute("aria-disabled");
-          link.setAttribute("aria-label", "Claim Lucky Days Casino welcome offer");
+      offerOptions.replaceChildren();
+      if (offer.options?.length) {
+        offer.options.forEach((option) => {
+          const optionCard = document.createElement("div");
+          optionCard.className = "offer-option";
+
+          const title = document.createElement("strong");
+          title.textContent = option.title;
+
+          const details = document.createElement("span");
+          details.textContent = option.details;
+
+          optionCard.append(title, details);
+          offerOptions.append(optionCard);
         });
+        offerOptions.hidden = false;
       } else {
-        [offerLink, mobileOfferLink].forEach((link) => {
-          link.href = "#";
-          link.setAttribute("aria-disabled", "true");
-          link.setAttribute("aria-label", "Lucky Days Casino offer unavailable in the selected location");
-        });
+        offerOptions.hidden = true;
       }
 
-      offerModal.classList.add("show");
-      offerModal.setAttribute("aria-hidden", "false");
-      document.documentElement.style.overflow = "hidden";
-      document.body.style.overflow = "hidden";
-    }
+      const hasLink = /^https?:\/\//i.test(offer.affiliateUrl);
+      if (hasLink) {
+        offerLink.href = buildAffiliateUrl(offer);
+        offerLink.textContent = `View offer at ${offer.operatorName}`;
+        offerLink.removeAttribute("aria-disabled");
+      } else {
+        offerLink.href = "#";
+        offerLink.textContent = "Affiliate link not configured";
+        offerLink.setAttribute("aria-disabled", "true");
+      }
 
-    function closeOfferModal() {
-      offerModal.classList.remove("show");
-      offerModal.setAttribute("aria-hidden", "true");
-      document.documentElement.style.overflow = "";
-      document.body.style.overflow = "";
+      offerModal.showModal();
     }
 
     function openVault(card) {
-      const region = regions[unlockedRegion] || { name: "Canada" };
       const vaultId = card.dataset.vault;
+
       closeVaults();
       card.classList.add("open");
+
       const selectedButton = card.querySelector(".vault-button");
       selectedButton.setAttribute("aria-expanded", "true");
 
@@ -2087,63 +2147,49 @@
 
       status.className = "status";
       status.textContent = "";
+
       trackEvent("vault_opened", {
-        region: unlockedRegion || "not_selected",
+        region: "Canada excluding Ontario",
         vault: vaultId,
         operator: affiliateOffers[vaultId].operatorName
       });
 
       window.setTimeout(() => {
-        showOffer(region, vaultId);
+        showOffer(vaultId);
         trackEvent("offer_viewed", {
-          region: unlockedRegion || "not_selected",
+          region: "Canada excluding Ontario",
           vault: vaultId,
           operator: affiliateOffers[vaultId].operatorName
         });
       }, 480);
     }
 
-    province.addEventListener("change", updateLocationInfo);
-    gate.addEventListener("submit", (event) => event.preventDefault());
-
     vaultCards.forEach((card) => {
       card.querySelector(".vault-button").addEventListener("click", () => openVault(card));
     });
 
-    [offerLink, mobileOfferLink].forEach((link) => {
-      link.addEventListener("click", (event) => {
-        if (link.getAttribute("aria-disabled") === "true") {
-          event.preventDefault();
-          return;
-        }
+    offerLink.addEventListener("click", (event) => {
+      if (offerLink.getAttribute("aria-disabled") === "true") {
+        event.preventDefault();
+        return;
+      }
 
-        trackEvent("affiliate_click", {
-          region: unlockedRegion || "not_selected",
-          vault: activeVault,
-          operator: activeOffer ? activeOffer.operatorName : "unknown"
-        });
+      trackEvent("affiliate_click", {
+        region: "Canada excluding Ontario",
+        vault: activeVault,
+        operator: activeOffer ? activeOffer.operatorName : "unknown"
       });
     });
 
-    offerModal.addEventListener("click", (event) => {
-      if (event.target === offerModal) closeOfferModal();
+    document.querySelectorAll(".modal-close").forEach((button) => {
+      button.addEventListener("click", () => button.closest("dialog").close());
     });
 
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && offerModal.classList.contains("show")) {
-        closeOfferModal();
-      }
+    document.querySelectorAll("dialog").forEach((dialog) => {
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) dialog.close();
+      });
     });
-
-try {
-      const savedRegion = localStorage.getItem("canadaVaultRegion");
-      if (savedRegion && regions[savedRegion]) {
-        province.value = savedRegion;
-        updateLocationInfo();
-      }
-    } catch (error) {
-      // No action is required when storage is blocked.
-    }
 
     trackEvent("landing_view");
   </script>
