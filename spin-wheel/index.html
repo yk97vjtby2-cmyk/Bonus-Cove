@@ -90,31 +90,22 @@
 </script>
 
 
+
+
 <script>
 (function () {
   function wirePlayHere() {
     var btn = document.getElementById('playHereBtn');
     if (!btn) return;
-
-    var baseClick = 'https://track.casino-bonus-cove.com/click';
-    var params = new URLSearchParams(window.location.search);
-    var bemobdata = params.get('bemobdata');
-
-    function trackedClickUrl() {
-      if (!bemobdata) return baseClick;
-      return baseClick + '?bemobdata=' + encodeURIComponent(bemobdata);
-    }
-
-    btn.href = trackedClickUrl();
+    var destination = 'https://track.casino-bonus-cove.com/click';
+    btn.href = destination;
     btn.target = '_self';
-
     btn.addEventListener('click', function (event) {
       event.preventDefault();
       event.stopPropagation();
-      window.location.href = trackedClickUrl();
+      window.location.assign(destination);
     }, false);
   }
-
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', wirePlayHere, { once: true });
   } else {
