@@ -88,18 +88,30 @@
     }
   })();
 </script>
+
+
 <script>
 (function () {
   function wirePlayHere() {
     var btn = document.getElementById('playHereBtn');
     if (!btn) return;
-    var destination = 'https://track.casino-bonus-cove.com/click';
 
-    btn.setAttribute('href', destination);
+    var baseClick = 'https://track.casino-bonus-cove.com/click';
+    var params = new URLSearchParams(window.location.search);
+    var bemobdata = params.get('bemobdata');
+
+    function trackedClickUrl() {
+      if (!bemobdata) return baseClick;
+      return baseClick + '?bemobdata=' + encodeURIComponent(bemobdata);
+    }
+
+    btn.href = trackedClickUrl();
+    btn.target = '_self';
+
     btn.addEventListener('click', function (event) {
       event.preventDefault();
       event.stopPropagation();
-      window.location.assign(destination);
+      window.location.href = trackedClickUrl();
     }, false);
   }
 
