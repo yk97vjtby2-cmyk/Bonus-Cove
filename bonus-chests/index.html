@@ -406,6 +406,13 @@
       padding:22px 10px 18px;
     }
 
+    /* Before selection, move CASINO BONUS + PICK A TREASURE CHEST + the
+       three-chest cluster down as one group. This keeps the centre of the
+       chest cluster close to the vertical centre on tablets of different heights. */
+    .wrap:not(.revealed):not(.chest-cleared) {
+      padding-top:max(22px, calc(50svh - 380px));
+    }
+
     .chest-row {
       margin-top:52px;
       grid-template-columns:repeat(2, minmax(0, 1fr));
@@ -434,16 +441,19 @@
 
     .wrap.revealed .brand {
       order:1;
-      /* CASINO BONUS now drops down with the offer as one reveal group. */
-      margin-top:max(70px, calc(50svh - 230px));
+      margin-top:max(48px, calc(50svh - 325px));
       transform:translateY(0);
+      max-width:760px;
+      font-size:clamp(30px, 5.2vw, 58px);
+      line-height:1.02;
+      letter-spacing:-1px;
     }
 
     .wrap.revealed .pick { display:none; }
 
     .wrap.revealed .offer {
       order:2;
-      margin-top:14px;
+      margin-top:24px;
     }
 
     .wrap .chest-row {
@@ -468,6 +478,12 @@
   @media (max-width:700px) {
     .wrap {
       padding:18px 6px 14px;
+    }
+
+    /* On phones, dynamically lower the whole initial composition so the
+       three chests are centred vertically rather than sitting near the top. */
+    .wrap:not(.revealed):not(.chest-cleared) {
+      padding-top:max(34px, calc(50svh - 280px));
     }
 
     .brand {
@@ -495,11 +511,15 @@
     }
 
     .wrap.revealed .brand {
-      margin-top:max(66px, calc(50svh - 218px));
+      margin-top:max(38px, calc(50svh - 260px));
+      max-width:94vw;
+      font-size:clamp(27px, 8vw, 42px);
+      line-height:1.03;
+      letter-spacing:-.5px;
     }
 
     .wrap.revealed .offer {
-      margin-top:12px;
+      margin-top:22px;
     }
 
     .headline {
@@ -517,7 +537,7 @@
     }
 
     .cta {
-      margin-top:8px;
+      margin-top:14px;
       min-height:68px;
       font-size:clamp(27px, 8vw, 38px);
     }
@@ -597,6 +617,8 @@
   const buttons = [...document.querySelectorAll('.chest-btn')];
   const offer = document.getElementById('offer');
   const wrap = document.querySelector('.wrap');
+  const brand = document.querySelector('.brand');
+  const compactView = window.matchMedia('(max-width: 980px)');
   let used = false;
 
   function makeParticles(button) {
@@ -650,6 +672,11 @@
 
       setTimeout(() => {
         wrap.classList.add('chest-cleared');
+
+        if (compactView.matches) {
+          brand.textContent = 'Congratulations you have a bonus offer!';
+        }
+
         wrap.classList.add('revealed');
         offer.classList.add('show');
       }, 1320);
