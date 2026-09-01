@@ -379,7 +379,6 @@
     font-weight:1000;
     text-transform:uppercase;
     box-shadow:
-      0 0 28px rgba(255,211,37,.30),
       0 8px 0 rgba(118,69,0,.22),
       inset 0 2px 0 rgba(255,255,255,.55);
     transition:transform .18s ease, filter .18s ease;
@@ -654,7 +653,7 @@
 
     requestAnimationFrame(() => {
       const ctaRect = cta.getBoundingClientRect();
-      const targetCenter = window.innerHeight * 0.50;
+      const targetCenter = window.innerHeight * 0.55;
       const currentCenter = ctaRect.top + (ctaRect.height / 2);
       const delta = targetCenter - currentCenter;
 
