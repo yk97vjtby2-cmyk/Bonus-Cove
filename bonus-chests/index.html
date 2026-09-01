@@ -441,7 +441,7 @@
 
     .wrap.revealed .brand {
       order:1;
-      margin-top:max(120px, calc(60svh - 300px));
+      margin-top:54px;
       transform:translateY(0);
       max-width:760px;
       font-size:clamp(30px, 5.2vw, 58px);
@@ -453,7 +453,7 @@
 
     .wrap.revealed .offer {
       order:2;
-      margin-top:24px;
+      margin-top:18px;
     }
 
     .wrap .chest-row {
@@ -511,7 +511,7 @@
     }
 
     .wrap.revealed .brand {
-      margin-top:max(140px, calc(60svh - 240px));
+      margin-top:46px;
       max-width:94vw;
       font-size:clamp(27px, 8vw, 42px);
       line-height:1.03;
@@ -519,7 +519,7 @@
     }
 
     .wrap.revealed .offer {
-      margin-top:26px;
+      margin-top:16px;
     }
 
     .headline {
@@ -537,7 +537,7 @@
     }
 
     .cta {
-      margin-top:14px;
+      margin-top:16px;
       min-height:68px;
       font-size:clamp(27px, 8vw, 38px);
     }
@@ -646,6 +646,24 @@
     }
   }
 
+  function positionCompactReveal() {
+    if (!compactView.matches) return;
+
+    const cta = document.getElementById('cta');
+    const brand = document.querySelector('.brand');
+
+    requestAnimationFrame(() => {
+      const ctaRect = cta.getBoundingClientRect();
+      const targetCenter = window.innerHeight * 0.50;
+      const currentCenter = ctaRect.top + (ctaRect.height / 2);
+      const delta = targetCenter - currentCenter;
+
+      const currentMargin = parseFloat(getComputedStyle(brand).marginTop) || 0;
+      const nextMargin = Math.max(18, currentMargin + delta);
+      brand.style.marginTop = `${nextMargin}px`;
+    });
+  }
+
   buttons.forEach(button => {
     button.addEventListener('click', () => {
       if (used) return;
@@ -679,6 +697,8 @@
 
         wrap.classList.add('revealed');
         offer.classList.add('show');
+
+        setTimeout(positionCompactReveal, 80);
       }, 1320);
     });
   });
